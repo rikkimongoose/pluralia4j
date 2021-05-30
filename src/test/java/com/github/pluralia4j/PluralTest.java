@@ -1,5 +1,6 @@
 package com.github.pluralia4j;
 
+import com.github.pluralia4j.lang.PluralisationRussian;
 import com.github.pluralia4j.template.MessageTemplate;
 import com.github.pluralia4j.template.TemplateItem;
 import com.github.pluralia4j.template.TemplateTextItem;
@@ -21,7 +22,7 @@ public class PluralTest extends TestCase {
     private static final String ITEMS_2_5 = "cats2_5";
 
     @Test
-    public void testPluralByData() {
+    public void testPluralWithData() {
         Map<String, Number> source = ImmutableMap.<String, Number>builder()
                     .put(ITEMS_0, 0)
                     .put(ITEMS_1, 1)
@@ -54,7 +55,7 @@ public class PluralTest extends TestCase {
                 .plural(ITEMS_21, "кот")
                 .build();
 
-        assertEquals("У нас было 0 котов 1 кот 2 кота 5 котов 11 котов 20 котов 21 кот", Plural.RUSSIAN.pluralByData(messageTemplate, source));
+        assertEquals("У нас было 0 котов 1 кот 2 кота 5 котов 11 котов 20 котов 21 кот", Plural.RUSSIAN.plural(messageTemplate, source));
 
 
         // Double
@@ -67,7 +68,7 @@ public class PluralTest extends TestCase {
                 .plural(ITEMS_2_5, "кот")
                 .build();
 
-        assertEquals("У нас было 2.2 кота 2.5 котов", Plural.RUSSIAN.pluralByData(messageTemplateDouble, source));
+        assertEquals("У нас было 2.2 кота 2.5 котов", Plural.RUSSIAN.plural(messageTemplateDouble, source));
 
         MessageTemplate messageTemplateWordCase = MessageTemplate.builder()
                 .text("У нас было")
@@ -77,15 +78,56 @@ public class PluralTest extends TestCase {
                 .plural(ITEMS_2, "КОТ")
                 .build();
 
-        assertEquals("У нас было 0 Котов 2 КОТА", Plural.RUSSIAN.pluralByData(messageTemplateWordCase, source));
+        assertEquals("У нас было 0 Котов 2 КОТА", Plural.RUSSIAN.plural(messageTemplateWordCase, source));
     }
 
     @Test
-    public void testPluralByData2() {
-        TemplateTextItem b = new TemplateTextItem("boo");
+    public void testPlural() {
+        //Integer
+        MessageTemplate messageTemplate = MessageTemplate.builder()
+                .dict("кот", "кота", "котов")
+                .text("У нас было")
+                .text(" 0 ")
+                .plural(0, "кот")
+                .text(" 1 ")
+                .plural(1, "кот")
+                .text(" 2 ")
+                .plural(2, "кот")
+                .text(" 5 ")
+                .plural(5, "кот")
+                .text(" 11 ")
+                .plural(11, "кот")
+                .text(" 20 ")
+                .plural(20, "кот")
+                .text(" 21 ")
+                .plural(21, "кот")
+                .build();
 
-        TemplateItem a = b;
+        assertEquals("У нас было 0 котов 1 кот 2 кота 5 котов 11 котов 20 котов 21 кот", Plural.RUSSIAN.plural(messageTemplate));
+    }
 
-        assertTrue(a instanceof TemplateTextItem);
+    @Test
+    public void testDict() {
+        Plural plural = new Plural(new PluralisationRussian());
+        plural.dict("кот", "кота", "котов");
+        MessageTemplate messageTemplate = MessageTemplate.builder()
+                .text("У нас было")
+                .text(" 0 ")
+                .plural(0, "кот")
+                .text(" 1 ")
+                .plural(1, "кот")
+                .text(" 2 ")
+                .plural(2, "кот")
+                .text(" 5 ")
+                .plural(5, "кот")
+                .text(" 11 ")
+                .plural(11, "кот")
+                .text(" 20 ")
+                .plural(20, "кот")
+                .text(" 21 ")
+                .plural(21, "кот")
+                .build();
+
+        assertEquals("У нас было 0 котов 1 кот 2 кота 5 котов 11 котов 20 котов 21 кот", plural.plural(messageTemplate));
     }
 }

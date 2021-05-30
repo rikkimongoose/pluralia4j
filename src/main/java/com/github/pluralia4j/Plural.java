@@ -10,49 +10,46 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.extern.java.Log;
 
+import java.util.Collections;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- *
+ * Plural converter from template item using pluralisation rule for a language
  */
 @Log
 public final class Plural {
     /**
-     *
+     * Already defined Plural with pluralisation rules for Russian language
      */
-    private static final Pluralisation RUSSIAN_RULE = new PluralisationRussian();
-    /**
-     *
-     */
-    private static final Pluralisation ENGLISH_RULE = new PluralisationEnglish();
+    public static final Plural RUSSIAN = new Plural(new PluralisationRussian());
 
     /**
-     *
+     * Already defined Plural with pluralisation rules for English language
      */
-    public static final Plural RUSSIAN = new Plural(RUSSIAN_RULE);
-    /**
-     *
-     */
-    public static final Plural ENGLISH = new Plural(ENGLISH_RULE);
+    public static final Plural ENGLISH = new Plural(new PluralisationEnglish());
 
     /**
-     *
+     * Pluralisation rules for current
      */
     private final Pluralisation pluralisation;
 
     /**
-     *
+     * Local dictionary for current Plural
      */
     private final WordformsDictionary wordformsDictionary;
 
+    /**
+     * Store wordforms dictionary in Plural even when generation from a template is over.
+     */
     @Getter
     @Setter
-    private boolean removeTemplateDictionary = false;
+    private boolean cacheDictionaryFromTemplate = true;
 
     /**
+     * Constructor just with a pluralisation rule
      *
-     * @param pluralisation
+     * @param pluralisation pluralisation rule for a language
      */
     public Plural(@NonNull Pluralisation pluralisation) {
         this.pluralisation = pluralisation;
@@ -60,8 +57,10 @@ public final class Plural {
     }
 
     /**
+     * Constructor just with a pluralisation rule and already defined dictionary of wordforms
      *
-     * @param pluralisation
+     * @param pluralisation pluralisation rule for a language
+     * @param wordformsDictionary dictionary of wordforms
      */
     public Plural(@NonNull Pluralisation pluralisation, @NonNull WordformsDictionary wordformsDictionary) {
         this(pluralisation);
@@ -69,42 +68,55 @@ public final class Plural {
     }
 
     /**
+     * Add wordforms record to local dictionary
      *
-     * @param key
-     * @param wordforms
+     * @param word word
+     * @param wordforms plural wordforms for this word
      * @return
      */
-    public Plural put(String key, String... wordforms) {
-        this.wordformsDictionary.put(key, wordforms);
+    public Plural dict(String word, String... wordforms) {
+        this.wordformsDictionary.put(word, wordforms);
         return this;
     }
 
     /**
+     * Make plural form from {@link MessageTemplate} using Map<String, Number>
      *
-     * @param messageTemplate
-     * @param data
-     * @return
+     * @param messageTemplate template in local DSL
+     * @param data data source
+     * @return String with proper plural forms, based on messageTemplate
      */
-    public String pluralByData(MessageTemplate messageTemplate, Map<String, Number> data) {
+    public String plural(@NonNull MessageTemplate messageTemplate, Map<String, Number> data) {
         WordformsDictionary messageTemplateWordforms = messageTemplate.getDictionary();
         wordformsDictionary.putTop(messageTemplateWordforms);
         final String result = messageTemplate.getTemplateItems()
                 .stream()
                 .map(templateItem -> templateToText(templateItem, data))
                 .collect(Collectors.joining());
-        if(removeTemplateDictionary) {
+        if(!cacheDictionaryFromTemplate) {
             wordformsDictionary.remove(messageTemplateWordforms);
         }
         return result;
     }
 
     /**
+     * Make plural form from {@link MessageTemplate} without using Map<String, Number>
      *
-     * @param templateItem
-     * @param data
-     * @return
+     * @param messageTemplate template in local DSL
+     * @return String with proper plural forms, based on messageTemplate
      */
-    public String templateToText(TemplateItem templateItem, Map<String, Number> data) {
+    public String plural(@NonNull MessageTemplate messageTemplate) {
+        return plural(messageTemplate, Collections.emptyMap());
+    }
+
+    /**
+     * Convert template item to pluralised text
+     *
+     * @param templateItem template item of DSL
+     * @param data data source
+     * @return pluralised text for current template item
+     */
+    private String templateToText(TemplateItem templateItem, Map<String, Number> data) {
         if(templateItem instanceof TemplateWithKeyItem) {
             final TemplateWithKeyItem templateWithKeyItem = (TemplateWithKeyItem)templateItem;
             final String key = templateWithKeyItem.getKey();

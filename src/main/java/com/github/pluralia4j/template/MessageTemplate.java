@@ -57,7 +57,9 @@ public final class MessageTemplate {
             return this;
         }
         public MessageTemplateBuilder plural(@NonNull Number num, @NonNull String word, @NonNull String... wordforms) {
-            dictionary.put(word, wordforms);
+            if(wordforms.length > 0) {
+                dictionary.put(word, wordforms);
+            }
             templateItemsSource.add(new TemplatePluralNumberItem(num, word));
             return this;
         }

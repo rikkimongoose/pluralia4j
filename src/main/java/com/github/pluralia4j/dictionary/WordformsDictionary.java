@@ -76,13 +76,18 @@ public class WordformsDictionary {
      * @return
      */
     public WordformsDictionary putTop(WordformsDictionary wordformsDictionary) {
-        dictionaries.add(0, wordformsDictionary.localDictionary);
+        if(!dictionaries.contains(wordformsDictionary)) {
+            dictionaries.add(0, wordformsDictionary.localDictionary);
+        }
         return this;
     }
 
     public WordformsDictionary put(String key, String... wordforms) {
         List<String> wordformsList = Lists.newArrayList(wordforms);
         wordformsList.add(0, key);
+        if(localDictionary.containsKey(key)) {
+            localDictionary.get(key).clear();
+        }
         localDictionary.putAll(key, wordformsList.stream().map(String::toLowerCase).collect(Collectors.toList()));
         return this;
     }
