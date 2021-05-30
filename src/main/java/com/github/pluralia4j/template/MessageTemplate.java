@@ -1,7 +1,6 @@
 package com.github.pluralia4j.template;
 
 import com.github.pluralia4j.dictionary.WordformsDictionary;
-import com.google.common.collect.Lists;
 import lombok.Getter;
 import lombok.NonNull;
 import org.jetbrains.annotations.NotNull;
@@ -33,9 +32,7 @@ public final class MessageTemplate {
         public MessageTemplateBuilder() {}
 
         public MessageTemplateBuilder dict(@NonNull String word, @NonNull String... wordforms) {
-            List<String> wordformsList = Lists.newArrayList(wordforms);
-            wordformsList.add(0, word);
-            dictionary.getLocalDictionary().putAll(word, wordformsList);
+            dictionary.put(word, wordforms);
             return this;
         }
 
@@ -55,7 +52,7 @@ public final class MessageTemplate {
         }
 
         public MessageTemplateBuilder plural(@NonNull String mapKey, @NonNull String word, @NonNull String... wordforms) {
-            dictionary.put(word, wordforms);
+            dict(word, wordforms);
             templateItemsSource.add(new TemplatePluralItem(mapKey, word));
             return this;
         }

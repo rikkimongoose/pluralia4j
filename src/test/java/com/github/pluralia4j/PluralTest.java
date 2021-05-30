@@ -50,6 +50,17 @@ public class PluralTest extends TestCase {
                 .build();
 
         assertEquals("У нас было 0 котов 1 кот 2 кота 5 котов 11 котов 20 котов 21 кот", Plural.RUSSIAN.pluralByData(messageTemplate, source));
+
+        MessageTemplate messageTemplateWordCase = MessageTemplate.builder()
+                .text("У нас было")
+                .text(" ").data(ITEMS_0).text(" ")
+                .plural(ITEMS_0, "Кот")
+                .text(" ").data(ITEMS_2).text(" ")
+                .plural(ITEMS_2, "КОТ")
+                .build();
+
+
+        assertEquals("У нас было 0 Котов 2 КОТА", Plural.RUSSIAN.pluralByData(messageTemplateWordCase, source));
     }
 
     @Test

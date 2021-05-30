@@ -9,10 +9,14 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import static com.github.pluralia4j.dictionary.WordformsUtils.caseFormatByWord;
 import static com.github.pluralia4j.dictionary.WordformsUtils.getOrLast;
 
+/**
+ *
+ */
 public class WordformsDictionary {
     @Getter private final Multimap<String, String> localDictionary;
 
@@ -68,10 +72,9 @@ public class WordformsDictionary {
     public WordformsDictionary put(String key, String... wordforms) {
         List<String> wordformsList = Lists.newArrayList(wordforms);
         wordformsList.add(0, key);
-        localDictionary.putAll(key, wordformsList);
+        localDictionary.putAll(key, wordformsList.stream().map(String::toLowerCase).collect(Collectors.toList()));
         return this;
     }
-
 
     private String findByKey(@NotNull String key, int index) {
         for (Multimap<String, String> dictionary : dictionaries) {
