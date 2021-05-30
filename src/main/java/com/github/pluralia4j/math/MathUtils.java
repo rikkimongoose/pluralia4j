@@ -3,13 +3,20 @@ package com.github.pluralia4j.math;
 import java.math.BigDecimal;
 
 /**
- *
+ * Math utils for number values.
  */
 public final class MathUtils {
+
     /**
+     * Separate double to integer and fraction parts.
      *
-     * @param value
-     * @return
+     * For 0.0 = 0 and 0
+     * For 12.0 = 12 and 0
+     * For 12.34 = 12 and 34
+     * For 0.34 = 0 and 34
+     *
+     * @param value value to separate
+     * @return SeparatedDouble with double data.
      */
     public static SeparatedDouble separateDouble(double value) {
         final int integerPart = (int)value;
