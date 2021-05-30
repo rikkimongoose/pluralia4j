@@ -25,7 +25,7 @@ public final class MessageTemplate {
     public List<TemplateItem> getTemplateItems() { return templateItems; }
 
     public static class MessageTemplateBuilder {
-        private final List<TemplateItem> templateItemsSource = new ArrayList<TemplateItem>();
+        private final List<TemplateItem> templateItemsSource = new ArrayList<>();
 
         private final WordformsDictionary dictionary = new WordformsDictionary();
 
@@ -52,7 +52,9 @@ public final class MessageTemplate {
         }
 
         public MessageTemplateBuilder plural(@NonNull String mapKey, @NonNull String word, @NonNull String... wordforms) {
-            dict(word, wordforms);
+            if(wordforms.length > 0) {
+                dict(word, wordforms);
+            }
             templateItemsSource.add(new TemplatePluralItem(mapKey, word));
             return this;
         }

@@ -12,13 +12,11 @@ import static com.github.pluralia4j.dictionary.RussianWordformsDictionary.INDEX_
 import static com.github.pluralia4j.dictionary.WordformsDictionary.INDEX_ONE;
 
 /**
- *
+ * Pluralisation rules for Russian language
  */
 public class PluralisationRussian extends Pluralisation {
     /**
-     *
-     * @param value
-     * @return
+     * {@inheritDoc}
      */
     @Override
     protected PluralType forIntegerAbs(int value) {
@@ -32,9 +30,7 @@ public class PluralisationRussian extends Pluralisation {
     }
 
     /**
-     *
-     * @param value
-     * @return
+     * {@inheritDoc}
      */
     @Override
     public PluralType forDouble(double value) {
@@ -45,7 +41,7 @@ public class PluralisationRussian extends Pluralisation {
     }
 
     /**
-     *
+     * Default PluralType => wordform's index mapping
      */
     private final Map<PluralType, Integer> defaultMap = Maps.immutableEnumMap(ImmutableMap.<PluralType, Integer>builder()
             .put(PluralType.ONE, INDEX_ONE)
@@ -54,11 +50,10 @@ public class PluralisationRussian extends Pluralisation {
             .build());
 
     /**
-     *
-     * @return
+     * {@inheritDoc}
      */
     @Override
-    protected Map<PluralType, Integer> getWordformByPlural() {
+    protected Map<PluralType, Integer> getPluralTypeToWordformIndexMap() {
         return defaultMap;
     }
 }

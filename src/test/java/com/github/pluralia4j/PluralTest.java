@@ -21,7 +21,6 @@ public class PluralTest extends TestCase {
     private static final String ITEMS_2_2 = "cats2_2";
     private static final String ITEMS_2_5 = "cats2_5";
 
-    @Test
     public void testPluralWithData() {
         Map<String, Number> source = ImmutableMap.<String, Number>builder()
                     .put(ITEMS_0, 0)
@@ -57,7 +56,6 @@ public class PluralTest extends TestCase {
 
         assertEquals("У нас было 0 котов 1 кот 2 кота 5 котов 11 котов 20 котов 21 кот", Plural.RUSSIAN.plural(messageTemplate, source));
 
-
         // Double
         MessageTemplate messageTemplateDouble = MessageTemplate.builder()
                 .text("У нас было")
@@ -81,7 +79,6 @@ public class PluralTest extends TestCase {
         assertEquals("У нас было 0 Котов 2 КОТА", Plural.RUSSIAN.plural(messageTemplateWordCase, source));
     }
 
-    @Test
     public void testPlural() {
         //Integer
         MessageTemplate messageTemplate = MessageTemplate.builder()
@@ -106,7 +103,6 @@ public class PluralTest extends TestCase {
         assertEquals("У нас было 0 котов 1 кот 2 кота 5 котов 11 котов 20 котов 21 кот", Plural.RUSSIAN.plural(messageTemplate));
     }
 
-    @Test
     public void testDict() {
         Plural plural = new Plural(new PluralisationRussian());
         plural.dict("кот", "кота", "котов");
