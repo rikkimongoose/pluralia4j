@@ -1,11 +1,12 @@
 package com.github.pluralia4j.template;
 
-import com.github.pluralia4j.lang.Pluralisation;
 import lombok.Value;
 
 import java.beans.ConstructorProperties;
-import java.util.Map;
 
+/**
+ * Extract data from provided Map and show it in a special format
+ */
 @Value
 public class TemplateDataItem extends TemplateWithKeyItem {
     /**
@@ -15,8 +16,8 @@ public class TemplateDataItem extends TemplateWithKeyItem {
 
     // HACK - Lombok can't catch derived classes
     /**
-     *
-     * @param key data to insert
+     * Parametrised constructor.
+     * @param key key to extract the data by
      * @param format format for data
      */
     @ConstructorProperties({"key", "format"})

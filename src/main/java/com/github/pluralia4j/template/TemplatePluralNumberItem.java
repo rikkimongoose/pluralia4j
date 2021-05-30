@@ -4,16 +4,19 @@ import lombok.Value;
 
 import java.beans.ConstructorProperties;
 
+/**
+ * Word, pluralised by already defined number
+ */
 @Value
 public class TemplatePluralNumberItem extends TemplateItem {
 
     /**
-     *
+     * Number of items
      */
     Number num;
 
     /**
-     *
+     * Word to pluralise
      */
     String word;
 
@@ -21,8 +24,8 @@ public class TemplatePluralNumberItem extends TemplateItem {
     /**
      * Parametrised constructor.
      *
-     * @param num
-     * @param word
+     * @param num number of itemss
+     * @param word word to pluralise
      */
     @ConstructorProperties({"num", "word"})
     public TemplatePluralNumberItem(Number num, String word) {

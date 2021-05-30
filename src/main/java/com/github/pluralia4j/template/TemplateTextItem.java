@@ -16,7 +16,6 @@ public class TemplateTextItem extends TemplateItem {
     // HACK - Lombok can't catch derived classes
     /**
      * Parametrised constructor.
-     *
      * @param text pure text
      */
     @ConstructorProperties({"text"})
