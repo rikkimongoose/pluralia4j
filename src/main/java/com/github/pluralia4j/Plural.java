@@ -105,32 +105,32 @@ public final class Plural {
      * @return
      */
     public String templateToText(TemplateItem templateItem, Map<String, Number> data) {
-        if(templateItem.getClass().isInstance(TemplateWithKeyItem.class)) {
+        if(templateItem instanceof TemplateWithKeyItem) {
             final TemplateWithKeyItem templateWithKeyItem = (TemplateWithKeyItem)templateItem;
             final String key = templateWithKeyItem.getKey();
             if(!data.containsKey(key)){
                 log.warning(String.format("Provided data doesn't contain key: %s", key));
                 return "";
             }
-            if (templateWithKeyItem.getClass().isInstance(TemplateDataItem.class)) {
+            if (templateWithKeyItem instanceof TemplateDataItem) {
                 final TemplateDataItem templateDataItem = (TemplateDataItem)templateItem;
                 return String.format(templateDataItem.getFormat(), data.get(key));
             }
 
-            if (templateWithKeyItem.getClass().isInstance(TemplatePluralItem.class)) {
+            if (templateWithKeyItem instanceof TemplatePluralItem) {
                 final TemplatePluralItem templateTextItem = (TemplatePluralItem)templateItem;
                 final int index = pluralisation.wordformIndex(data.get(key));
                 return wordformsDictionary.translate(templateTextItem.getWord(), index);
             }
         }
 
-        if (templateItem.getClass().isInstance(TemplatePluralNumberItem.class)) {
+        if (templateItem instanceof TemplatePluralNumberItem) {
             final TemplatePluralNumberItem templatePluralNumberItem = (TemplatePluralNumberItem)templateItem;
             final int index = pluralisation.wordformIndex(templatePluralNumberItem.getNum());
             return wordformsDictionary.translate(templatePluralNumberItem.getWord(), index);
         }
 
-        if (templateItem.getClass().isInstance(TemplateTextItem.class)) {
+        if (templateItem instanceof TemplateTextItem) {
             final TemplateTextItem templateTextItem = (TemplateTextItem)templateItem;
             return templateTextItem.getText();
         }

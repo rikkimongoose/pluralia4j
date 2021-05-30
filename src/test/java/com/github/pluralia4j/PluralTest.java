@@ -1,6 +1,8 @@
 package com.github.pluralia4j;
 
 import com.github.pluralia4j.template.MessageTemplate;
+import com.github.pluralia4j.template.TemplateItem;
+import com.github.pluralia4j.template.TemplateTextItem;
 import com.google.common.collect.ImmutableMap;
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -30,22 +32,32 @@ public class PluralTest extends TestCase {
 
         MessageTemplate messageTemplate = MessageTemplate.builder()
                 .text("У нас было")
+                .dict("кот", "кота", "котов")
                 .text(" ").data(ITEMS_0).text(" ")
-                .plural(ITEMS_0, "кот", "кота", "котов")
+                .plural(ITEMS_0, "кот")
                 .text(" ").data(ITEMS_1).text(" ")
-                .plural(ITEMS_1, "кот", "кота", "котов")
+                .plural(ITEMS_1, "кот")
                 .text(" ").data(ITEMS_2).text(" ")
-                .plural(ITEMS_2, "кот", "кота", "котов")
+                .plural(ITEMS_2, "кот")
                 .text(" ").data(ITEMS_5).text(" ")
-                .plural(ITEMS_5, "кот", "кота", "котов")
+                .plural(ITEMS_5, "кот")
                 .text(" ").data(ITEMS_11).text(" ")
-                .plural(ITEMS_11, "кот", "кота", "котов")
+                .plural(ITEMS_11, "кот")
                 .text(" ").data(ITEMS_20).text(" ")
-                .plural(ITEMS_20, "кот", "кота", "котов")
+                .plural(ITEMS_20, "кот")
                 .text(" ").data(ITEMS_21).text(" ")
-                .plural(ITEMS_21, "кот", "кота", "котов")
+                .plural(ITEMS_21, "кот")
                 .build();
 
         assertEquals("У нас было 0 котов 1 кот 2 кота 5 котов 11 котов 20 котов 21 кот", Plural.RUSSIAN.pluralByData(messageTemplate, source));
+    }
+
+    @Test
+    public void testPluralByData2() {
+        TemplateTextItem b = new TemplateTextItem("boo");
+
+        TemplateItem a = b;
+
+        assertTrue(a instanceof TemplateTextItem);
     }
 }

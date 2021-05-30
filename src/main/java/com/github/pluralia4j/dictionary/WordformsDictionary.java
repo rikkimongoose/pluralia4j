@@ -1,12 +1,12 @@
 package com.github.pluralia4j.dictionary;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.MultimapBuilder;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -66,7 +66,7 @@ public class WordformsDictionary {
     }
 
     public WordformsDictionary put(String key, String... wordforms) {
-        List<String> wordformsList = Arrays.asList(wordforms);
+        List<String> wordformsList = Lists.newArrayList(wordforms);
         wordformsList.add(0, key);
         localDictionary.putAll(key, wordformsList);
         return this;

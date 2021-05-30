@@ -1,12 +1,12 @@
 package com.github.pluralia4j.template;
 
 import com.github.pluralia4j.dictionary.WordformsDictionary;
+import com.google.common.collect.Lists;
 import lombok.Getter;
 import lombok.NonNull;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public final class MessageTemplate {
@@ -32,8 +32,8 @@ public final class MessageTemplate {
 
         public MessageTemplateBuilder() {}
 
-        public MessageTemplateBuilder dic(@NonNull String word, @NonNull String... wordforms) {
-            List<String> wordformsList = Arrays.asList(wordforms);
+        public MessageTemplateBuilder dict(@NonNull String word, @NonNull String... wordforms) {
+            List<String> wordformsList = Lists.newArrayList(wordforms);
             wordformsList.add(0, word);
             dictionary.getLocalDictionary().putAll(word, wordformsList);
             return this;
