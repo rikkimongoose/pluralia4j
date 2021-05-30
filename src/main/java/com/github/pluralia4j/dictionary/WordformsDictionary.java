@@ -19,6 +19,11 @@ import static com.github.pluralia4j.dictionary.WordformsUtils.getOrLast;
  */
 public class WordformsDictionary {
     /**
+     * Single index
+     */
+    public static final int INDEX_ONE = 0;
+
+    /**
      * Local dictionary of storage
      */
     @Getter private final Multimap<String, String> localDictionary;

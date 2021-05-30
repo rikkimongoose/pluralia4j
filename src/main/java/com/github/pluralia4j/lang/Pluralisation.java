@@ -5,6 +5,9 @@ import com.google.common.collect.Maps;
 
 import java.util.Map;
 
+import static com.github.pluralia4j.dictionary.EnglishWordformsDictionary.INDEX_MANY;
+import static com.github.pluralia4j.dictionary.WordformsDictionary.INDEX_ONE;
+
 /**
  *
  */
@@ -37,8 +40,8 @@ public abstract class Pluralisation {
     }
 
     private final Map<PluralType, Integer> defaultMap = Maps.immutableEnumMap(ImmutableMap.<PluralType, Integer>builder()
-            .put(PluralType.ONE, 0)
-            .put(PluralType.MANY, 1)
+            .put(PluralType.ONE, INDEX_ONE)
+            .put(PluralType.MANY, INDEX_MANY)
             .build());
 
     protected Map<PluralType, Integer> getWordformByPlural() {

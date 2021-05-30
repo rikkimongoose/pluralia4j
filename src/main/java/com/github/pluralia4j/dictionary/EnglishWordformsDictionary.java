@@ -10,7 +10,12 @@ import java.util.regex.Pattern;
 /**
  * A ready dictionary covering most of plural forms in English.
  */
-public class EnglishWordformsDictionary extends WordformsDictionary {
+public final class EnglishWordformsDictionary extends WordformsDictionary {
+    /**
+     * Plural index for English
+     */
+    public static final int INDEX_MANY = 1;
+
     /**
      * Rules for standard English plural nouns
      */

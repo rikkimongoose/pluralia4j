@@ -7,6 +7,10 @@ import com.google.common.collect.Maps;
 
 import java.util.Map;
 
+import static com.github.pluralia4j.dictionary.RussianWordformsDictionary.INDEX_FEW;
+import static com.github.pluralia4j.dictionary.RussianWordformsDictionary.INDEX_MANY;
+import static com.github.pluralia4j.dictionary.WordformsDictionary.INDEX_ONE;
+
 /**
  *
  */
@@ -44,9 +48,9 @@ public class PluralisationRussian extends Pluralisation {
      *
      */
     private final Map<PluralType, Integer> defaultMap = Maps.immutableEnumMap(ImmutableMap.<PluralType, Integer>builder()
-            .put(PluralType.ONE, 0)
-            .put(PluralType.FEW, 1)
-            .put(PluralType.MANY, 2)
+            .put(PluralType.ONE, INDEX_ONE)
+            .put(PluralType.FEW, INDEX_FEW)
+            .put(PluralType.MANY, INDEX_MANY)
             .build());
 
     /**
