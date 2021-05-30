@@ -15,11 +15,17 @@ import static com.github.pluralia4j.dictionary.WordformsUtils.caseFormatByWord;
 import static com.github.pluralia4j.dictionary.WordformsUtils.getOrLast;
 
 /**
- *
+ * Wordforms storage
  */
 public class WordformsDictionary {
+    /**
+     * Local dictionary of storage
+     */
     @Getter private final Multimap<String, String> localDictionary;
 
+    /**
+     *
+     */
     private final List<Multimap<String, String>> dictionaries = new ArrayList<>();
 
     /**

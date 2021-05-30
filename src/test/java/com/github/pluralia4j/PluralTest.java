@@ -17,6 +17,8 @@ public class PluralTest extends TestCase {
     private static final String ITEMS_11 = "cats11";
     private static final String ITEMS_20 = "cats20";
     private static final String ITEMS_21 = "cats21";
+    private static final String ITEMS_2_2 = "cats2_2";
+    private static final String ITEMS_2_5 = "cats2_5";
 
     @Test
     public void testPluralByData() {
@@ -28,8 +30,11 @@ public class PluralTest extends TestCase {
                     .put(ITEMS_11, 11)
                     .put(ITEMS_20, 20)
                     .put(ITEMS_21, 21)
+                    .put(ITEMS_2_2, 2.2)
+                    .put(ITEMS_2_5, 2.5)
                 .build();
 
+        //Integer
         MessageTemplate messageTemplate = MessageTemplate.builder()
                 .text("У нас было")
                 .dict("кот", "кота", "котов")
@@ -51,6 +56,19 @@ public class PluralTest extends TestCase {
 
         assertEquals("У нас было 0 котов 1 кот 2 кота 5 котов 11 котов 20 котов 21 кот", Plural.RUSSIAN.pluralByData(messageTemplate, source));
 
+
+        // Double
+        MessageTemplate messageTemplateDouble = MessageTemplate.builder()
+                .text("У нас было")
+                .dict("кот", "кота", "котов")
+                .text(" ").data(ITEMS_2_2).text(" ")
+                .plural(ITEMS_2_2, "кот")
+                .text(" ").data(ITEMS_2_5).text(" ")
+                .plural(ITEMS_2_5, "кот")
+                .build();
+
+        assertEquals("У нас было 2.2 кота 2.5 котов", Plural.RUSSIAN.pluralByData(messageTemplateDouble, source));
+
         MessageTemplate messageTemplateWordCase = MessageTemplate.builder()
                 .text("У нас было")
                 .text(" ").data(ITEMS_0).text(" ")
@@ -58,7 +76,6 @@ public class PluralTest extends TestCase {
                 .text(" ").data(ITEMS_2).text(" ")
                 .plural(ITEMS_2, "КОТ")
                 .build();
-
 
         assertEquals("У нас было 0 Котов 2 КОТА", Plural.RUSSIAN.pluralByData(messageTemplateWordCase, source));
     }

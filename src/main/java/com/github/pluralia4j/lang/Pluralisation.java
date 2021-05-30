@@ -15,6 +15,9 @@ public abstract class Pluralisation {
      * @return
      */
     public PluralType forInteger(int value) {
+        return forIntegerAbs(Math.abs(value));
+    }
+    protected PluralType forIntegerAbs(int value) {
         return (value == 1 || value == 0) ? PluralType.ONE : PluralType.MANY;
     }
 
@@ -24,9 +27,13 @@ public abstract class Pluralisation {
      * @return
      */
     public PluralType forDouble(double value) {
+        return forDoubleAbs(Math.abs(value));
+    }
+
+    protected PluralType forDoubleAbs(double value) {
         int valueAsInt = (int)value;
         //i.e. "0.25 inch; 1.25 inches."
-        return ((double)valueAsInt == value) ? forInteger(valueAsInt) : ((value > 0.0 && value < 1.0) ? PluralType.ONE : PluralType.MANY);
+        return ((double)valueAsInt == value) ? forIntegerAbs(valueAsInt) : ((value > 0.0 && value < 1.0) ? PluralType.ONE : PluralType.MANY);
     }
 
     private final Map<PluralType, Integer> defaultMap = Maps.immutableEnumMap(ImmutableMap.<PluralType, Integer>builder()

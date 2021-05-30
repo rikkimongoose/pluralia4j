@@ -17,7 +17,7 @@ public class PluralisationRussian extends Pluralisation {
      * @return
      */
     @Override
-    public PluralType forInteger(int value) {
+    protected PluralType forIntegerAbs(int value) {
         if (value % 10 == 1 && value % 100 != 11) {
             return PluralType.ONE;
         }
