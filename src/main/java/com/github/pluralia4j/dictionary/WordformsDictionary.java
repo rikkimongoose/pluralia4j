@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static com.github.pluralia4j.dictionary.WordformsUtils.caseFormatByWord;
+import static com.github.pluralia4j.dictionary.WordformsUtils.wordToWordCase;
 import static com.github.pluralia4j.dictionary.WordformsUtils.getOrLast;
 
 /**
@@ -132,10 +132,10 @@ public class WordformsDictionary {
      * @return
      */
     public String translate(@NotNull String word, int index) {
-        final WordCase wordCase = caseFormatByWord(word);
+        final WordCase wordCase = WordformsUtils.wordCaseByWord(word);
         final String key = word.toLowerCase();
         final String wordform = translateWordform(key, index);
-        return caseFormatByWord(wordform, wordCase);
+        return WordformsUtils.wordToWordCase(wordform, wordCase);
     }
 
     public void remove(WordformsDictionary messageTemplateWordforms) {

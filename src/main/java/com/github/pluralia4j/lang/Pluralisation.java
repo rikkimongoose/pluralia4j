@@ -8,7 +8,6 @@ import java.util.Map;
 import static com.github.pluralia4j.dictionary.EnglishWordformsDictionary.INDEX_MANY;
 import static com.github.pluralia4j.dictionary.WordformsDictionary.INDEX_ONE;
 
-
 /**
  * Basic pluralisation rules for Russian language
  */

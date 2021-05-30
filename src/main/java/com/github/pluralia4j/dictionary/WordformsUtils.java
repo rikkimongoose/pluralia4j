@@ -24,11 +24,12 @@ public class WordformsUtils {
                     .put(WordCase.UPPER_FIRST, StringUtils::capitalize)
                     .build());
     /**
+     * Returns WordCase for the word.
      *
-     * @param word
-     * @return
+     * @param word word to get it's WordCase
+     * @return WordCase of current word
      */
-    public static WordCase caseFormatByWord(@NotNull String word) {
+    public static WordCase wordCaseByWord(@NotNull String word) {
         if(StringUtils.isMixedCase(word)) {
             return WordCase.UPPER_FIRST;
         }
@@ -40,12 +41,12 @@ public class WordformsUtils {
     }
 
     /**
-     *
-     * @param word
-     * @param wordCase
-     * @return
+     * Transforms word by specified WordCase. The original word's case doesn't matter
+     * @param word word for transformation
+     * @param wordCase word case
+     * @return the same word in a defined case
      */
-    public static String caseFormatByWord(@NotNull String word, @NotNull WordCase wordCase) {
+    public static String wordToWordCase(@NotNull String word, @NotNull WordCase wordCase) {
         if(StringUtils.isEmpty(word) || !WORD_CASE_TO_CONVERT.containsKey(wordCase)){
             return word;
         }
@@ -53,10 +54,11 @@ public class WordformsUtils {
     }
 
     /**
-     *
-     * @param list
-     * @param index
-     * @return
+     * Get an item from list by index. If index is
+     * @param list source list
+     * @param index index in list
+     * @return item by index, if index is less then the size of the list, the last element of list
+     * if index is larder then size, null if list is empty
      */
     public static String getOrLast(List<String> list, int index) {
         return list != null && !list.isEmpty() ? (list.size() > index ? list.get(index) : list.get(list.size() - 1)) : null;
