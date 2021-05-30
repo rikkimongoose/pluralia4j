@@ -14,9 +14,9 @@ import java.util.function.UnaryOperator;
  */
 public class WordformsUtils {
     /***
-     *
+     * Mapping the allowed WordCase to a method that transforms a word according to it
      */
-    public static final Map<WordCase, UnaryOperator<String>> WORD_CASE_TO_CONVERT =
+    private static final Map<WordCase, UnaryOperator<String>> WORD_CASE_TO_CONVERT =
             Maps.immutableEnumMap(
             ImmutableMap.<WordCase, UnaryOperator<String>>builder()
                     .put(WordCase.UPPER, StringUtils::upperCase)
@@ -53,7 +53,7 @@ public class WordformsUtils {
     }
 
     /**
-     * Получить
+     *
      * @param list
      * @param index
      * @return

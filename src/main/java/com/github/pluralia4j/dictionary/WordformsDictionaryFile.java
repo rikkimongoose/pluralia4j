@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Map;
 
 /**
- * Model for external YAML dictionary
+ * Model for external wordforms dictionary in YAML format
  */
 @Data
 public class WordformsDictionaryFile {
