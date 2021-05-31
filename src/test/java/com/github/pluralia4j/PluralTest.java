@@ -2,11 +2,8 @@ package com.github.pluralia4j;
 
 import com.github.pluralia4j.lang.PluralisationRussian;
 import com.github.pluralia4j.template.MessageTemplate;
-import com.github.pluralia4j.template.TemplateItem;
-import com.github.pluralia4j.template.TemplateTextItem;
 import com.google.common.collect.ImmutableMap;
 import junit.framework.TestCase;
-import org.junit.Test;
 
 import java.util.Map;
 
