@@ -45,7 +45,7 @@ public class PluralisationRussian extends Pluralisation {
     }
 
     /**
-     * Default PluralType => wordform's index mapping
+     * Default {@link PluralType} => wordform's index mapping
      */
     private final Map<PluralType, Integer> defaultMap = Maps.immutableEnumMap(ImmutableMap.<PluralType, Integer>builder()
             .put(PluralType.ONE, INDEX_ONE)

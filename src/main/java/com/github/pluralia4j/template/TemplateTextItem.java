@@ -1,10 +1,8 @@
 package com.github.pluralia4j.template;
 
-import com.github.pluralia4j.lang.Pluralisation;
 import lombok.Value;
 
 import java.beans.ConstructorProperties;
-import java.util.Map;
 
 @Value
 public class TemplateTextItem extends TemplateItem {

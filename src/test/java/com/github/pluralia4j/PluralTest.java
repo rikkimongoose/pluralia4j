@@ -22,7 +22,7 @@ public class PluralTest extends TestCase {
     private static final String ITEMS_2_5 = "cats2_5";
 
     public void testPluralWithData() {
-        Map<String, Number> source = ImmutableMap.<String, Number>builder()
+        final Map<String, Number> source = ImmutableMap.<String, Number>builder()
                     .put(ITEMS_0, 0)
                     .put(ITEMS_1, 1)
                     .put(ITEMS_2, 2)
@@ -35,7 +35,7 @@ public class PluralTest extends TestCase {
                 .build();
 
         //Integer
-        MessageTemplate messageTemplate = MessageTemplate.builder()
+        final MessageTemplate messageTemplate = MessageTemplate.builder()
                 .text("У нас было")
                 .dict("кот", "кота", "котов")
                 .text(" ").data(ITEMS_0).text(" ")
@@ -57,7 +57,7 @@ public class PluralTest extends TestCase {
         assertEquals("У нас было 0 котов 1 кот 2 кота 5 котов 11 котов 20 котов 21 кот", Plural.RUSSIAN.plural(messageTemplate, source));
 
         // Double
-        MessageTemplate messageTemplateDouble = MessageTemplate.builder()
+        final MessageTemplate messageTemplateDouble = MessageTemplate.builder()
                 .text("У нас было")
                 .dict("кот", "кота", "котов")
                 .text(" ").data(ITEMS_2_2).text(" ")
@@ -68,7 +68,7 @@ public class PluralTest extends TestCase {
 
         assertEquals("У нас было 2.2 кота 2.5 котов", Plural.RUSSIAN.plural(messageTemplateDouble, source));
 
-        MessageTemplate messageTemplateWordCase = MessageTemplate.builder()
+        final MessageTemplate messageTemplateWordCase = MessageTemplate.builder()
                 .text("У нас было")
                 .text(" ").data(ITEMS_0).text(" ")
                 .plural(ITEMS_0, "Кот")
@@ -81,7 +81,7 @@ public class PluralTest extends TestCase {
 
     public void testPlural() {
         //Integer
-        MessageTemplate messageTemplate = MessageTemplate.builder()
+        final MessageTemplate messageTemplate = MessageTemplate.builder()
                 .dict("кот", "кота", "котов")
                 .text("У нас было")
                 .text(" 0 ")
@@ -104,9 +104,9 @@ public class PluralTest extends TestCase {
     }
 
     public void testDict() {
-        Plural plural = new Plural(new PluralisationRussian());
+        final Plural plural = new Plural(new PluralisationRussian());
         plural.dict("кот", "кота", "котов");
-        MessageTemplate messageTemplate = MessageTemplate.builder()
+        final MessageTemplate messageTemplate = MessageTemplate.builder()
                 .text("У нас было")
                 .text(" 0 ")
                 .plural(0, "кот")

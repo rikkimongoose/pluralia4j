@@ -13,7 +13,7 @@ import static com.github.pluralia4j.dictionary.WordformsDictionary.INDEX_ONE;
  */
 public abstract class Pluralisation {
     /**
-     * PluralType by integer value
+     * {@link PluralType} by integer value
      * @param value that makes word plural
      * @return PluralType for value
      */
@@ -22,27 +22,27 @@ public abstract class Pluralisation {
     }
 
     /**
-     * PluralType by absolute integer value
+     * {@link PluralType} by absolute integer value
      * @param value that makes word plural
-     * @return PluralType for value
+     * @return {@link PluralType} for value
      */
     protected PluralType forIntegerAbs(int value) {
         return (value == 1) ? PluralType.ONE : PluralType.MANY;
     }
 
     /**
-     * PluralType by double value (i.e. "0.25 inch; 1.25 inches")
+     * {@link PluralType} by double value (i.e. "0.25 inch; 1.25 inches")
      * @param value that makes word plural
-     * @return PluralType for value
+     * @return {@link PluralType} for value
      */
     public PluralType forDouble(double value) {
         return forDoubleAbs(Math.abs(value));
     }
 
     /**
-     * PluralType by absolute double value (i.e. "0.25 inch; 1.25 inches")
+     * {@link PluralType} by absolute double value (i.e. "0.25 inch; 1.25 inches")
      * @param value that makes word plural
-     * @return PluralType for value
+     * @return {@link PluralType} for value
      */
     protected PluralType forDoubleAbs(double value) {
         int valueAsInt = (int)value;
@@ -50,7 +50,7 @@ public abstract class Pluralisation {
     }
 
     /**
-     * Default PluralType => wordform's index mapping
+     * Default {@link PluralType} => wordform's index mapping
      */
     private final Map<PluralType, Integer> defaultMap = Maps.immutableEnumMap(ImmutableMap.<PluralType, Integer>builder()
             .put(PluralType.ONE, INDEX_ONE)
@@ -58,7 +58,7 @@ public abstract class Pluralisation {
             .build());
 
     /**
-     * Get PluralType => wordform's index Map
+     * Get {@link PluralType} => wordform's index Map
      *
      * @return EnumMap<PluralType, Integer> with mappings
      */
@@ -67,9 +67,9 @@ public abstract class Pluralisation {
     }
 
     /**
-     * Get wordform's index for a PluralType
-     * @param pluralType which index is loaded
-     * @return the proper wordform's index for PluralType, otherwise 0
+     * Get wordform's index for a {@link PluralType}
+     * @param pluralType {@link PluralType} which index is loaded
+     * @return the proper wordform's index for {@link PluralType}, otherwise 0
      */
     protected int wordformIndexByPluralType(PluralType pluralType) {
         if(!getPluralTypeToWordformIndexMap().containsKey(pluralType)) {
