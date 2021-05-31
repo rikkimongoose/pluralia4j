@@ -3,8 +3,8 @@
 In most langauges nouns have plural forms. When you display a message, you want it to look natural. A format string isn't enough for it, i.e.
 
 ```java
-String.format("You have %s new messages.", newMessagesSize);
-/if newMessageSize == 1, you got "You have 1 new messages.", that is correct Java, but poor English.
+String.format("You have %s new messages", newMessagesSize);
+//if newMessageSize == 1, text became "You have 1 new messages". This is correct Java, but poor English.
 ```
 
 If values are double, it brings even more trouble (0.5 inch, 1.5 inches, 1 inch, 0 inches, -1 inch, etc). Choosing the right variant [is hard even to native speakers](https://painintheenglish.com/case/2396).
