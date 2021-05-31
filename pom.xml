@@ -7,6 +7,11 @@
     <groupId>com.github.pluralia4j</groupId>
     <artifactId>pluralia4j</artifactId>
     <version>1.0</version>
+    <name>pluralia4j</name>
+    <description>Lightweight library for Java 8+ that makes generating plural version of words easy.</description>
+    <properties>
+        <java.version>8</java.version>
+    </properties>
     <build>
         <plugins>
             <plugin>
@@ -62,4 +67,26 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/rikkimongoose/*</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub RikkiMongoose Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/rikkimongoose/pluralia4j</url>
+        </repository>
+    </distributionManagement>
+    <scm>
+        <connection>scm:git:ssh://git@github.com/rikkimongoose/pluralia4j.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/rikkimongoose/pluralia4j.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 </project>
