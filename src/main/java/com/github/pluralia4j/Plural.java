@@ -72,7 +72,7 @@ public final class Plural {
      *
      * @param word word
      * @param wordforms plural wordforms for this word
-     * @return
+     * @return chain of initialisation
      */
     public Plural dict(String word, String... wordforms) {
         this.wordformsDictionary.put(word, wordforms);
@@ -132,14 +132,14 @@ public final class Plural {
             if (templateWithKeyItem instanceof TemplatePluralItem) {
                 final TemplatePluralItem templateTextItem = (TemplatePluralItem)templateItem;
                 final int index = pluralisation.wordformIndex(data.get(key));
-                return wordformsDictionary.translate(templateTextItem.getWord(), index);
+                return wordformsDictionary.plural(templateTextItem.getWord(), index);
             }
         }
 
         if (templateItem instanceof TemplatePluralNumberItem) {
             final TemplatePluralNumberItem templatePluralNumberItem = (TemplatePluralNumberItem)templateItem;
             final int index = pluralisation.wordformIndex(templatePluralNumberItem.getNum());
-            return wordformsDictionary.translate(templatePluralNumberItem.getWord(), index);
+            return wordformsDictionary.plural(templatePluralNumberItem.getWord(), index);
         }
 
         if (templateItem instanceof TemplateTextItem) {

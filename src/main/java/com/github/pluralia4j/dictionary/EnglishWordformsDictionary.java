@@ -30,7 +30,7 @@ public final class EnglishWordformsDictionary extends WordformsDictionary {
      * {@inheritDoc}
      */
     @Override
-    public String translateByRule(@NotNull String key, int index) {
+    public String pluralByRule(@NotNull String key, int index) {
         if(index == 0) {
             return key;
         }

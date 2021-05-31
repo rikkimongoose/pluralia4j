@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.MultimapBuilder;
 import lombok.Getter;
+import lombok.NonNull;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -65,8 +66,8 @@ public class WordformsDictionary {
      * @param wordformsDictionary dictionary to add
      * @return chain of initialisation
      */
-    public WordformsDictionary putTop(WordformsDictionary wordformsDictionary) {
-        if(!dictionaries.contains(wordformsDictionary)) {
+    public WordformsDictionary putTop(@NonNull WordformsDictionary wordformsDictionary) {
+        if(!dictionaries.contains(wordformsDictionary.localDictionary)) {
             dictionaries.add(0, wordformsDictionary.localDictionary);
         }
         return this;
@@ -89,15 +90,15 @@ public class WordformsDictionary {
     }
 
     /**
-     *
-     * @param key
-     * @param index
-     * @return
+     * Find wordforms by word
+     * @param word word to pluralise
+     * @param index plural wordform's index
+     * @return word in plural form
      */
-    private String findByKey(@NotNull String key, int index) {
+    private String findByWord(@NotNull String word, int index) {
         for (Multimap<String, String> dictionary : dictionaries) {
-            if(dictionary.containsKey(key)) {
-                List<String> wordforms = new ArrayList<>(dictionary.get(key));
+            if(dictionary.containsKey(word)) {
+                List<String> wordforms = new ArrayList<>(dictionary.get(word));
                 return getOrLast(wordforms, index);
             }
         }
@@ -105,46 +106,47 @@ public class WordformsDictionary {
     }
 
     /**
-     *
-     * @param key
-     * @param index
-     * @return
+     * Get plural form of a word according to grammar rules, without using any wordforms dictionaries.
+     * @param word word to pluralise
+     * @param index plural wordform's index
+     * @return word in plural form
      */
-    public String translateByRule(@NotNull String key, int index) {
-        return key;
+    public String pluralByRule(@NotNull String word, int index) {
+        return word;
     }
 
     /**
-     *
-     * @param key
-     * @param index
-     * @return
+     * Get plural wordform according to local dictionaries
+     * @param word word to pluralise
+     * @param index plural wordform's index
+     * @return word in plural form
      */
-    protected String translateWordform(@NotNull String key, int index) {
-        final String wordform = findByKey(key, index);
+    protected String pluralByDictionary(@NotNull String word, int index) {
+        final String wordform = findByWord(word, index);
         if(Objects.nonNull(wordform)) {
             return wordform;
         }
-        return translateByRule(key, index);
+        return pluralByRule(word, index);
     }
 
     /**
-     *
-     * @param word
-     * @return
+     * Get plural wordform for a word in same case
+     * @param word word to pluralise
+     * @param index plural wordform index
+     * @return word in plural form
      */
-    public String translate(@NotNull String word, int index) {
+    public String plural(@NotNull String word, int index) {
         final WordCase wordCase = WordformsUtils.wordCaseByWord(word);
         final String key = word.toLowerCase();
-        final String wordform = translateWordform(key, index);
+        final String wordform = pluralByDictionary(key, index);
         return WordformsUtils.wordToWordCase(wordform, wordCase);
     }
 
     /**
-     *
-     * @param messageTemplateWordforms
+     * Remove an additional WordformsDictionary
+     * @param wordformsDictionary WordformsDictionary to remove
      */
-    public void remove(WordformsDictionary messageTemplateWordforms) {
-        dictionaries.remove(messageTemplateWordforms);
+    public void remove(WordformsDictionary wordformsDictionary) {
+        dictionaries.remove(wordformsDictionary.getLocalDictionary());
     }
 }
