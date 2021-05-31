@@ -4,7 +4,8 @@ In most langauges nouns have plural forms. When you display a message, you want 
 
 ```java
 String.format("You have %s new messages", newMessagesSize);
-//if newMessageSize == 1, text became "You have 1 new messages". This is correct Java, but poor English.
+// if newMessageSize == 1, text became "You have 1 new messages".
+// It's correct Java, but poor English.
 ```
 
 If values are double, it brings even more trouble (0.5 inch, 1.5 inches, 1 inch, 0 inches, -1 inch, etc). Choosing the right variant [is hard even to native speakers](https://painintheenglish.com/case/2396).
