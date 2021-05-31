@@ -17,10 +17,10 @@ That makes i18n of messages with numbers a true pain. This rules are mostly aren
 But **pluralia4j** comes to the rescue. Based on standart [CLDR Unicode Plural Rules](https://unicode-org.github.io/cldr-staging/charts/37/supplemental/language_plural_rules.html), pluralia4j provides a small but powerful DSL to make your messages grammatically consistent.
 
 ## Install
-The pluralia4j package is avaible at GitHub Packages.
+The pluralia4j package is currently avaible at GitHub Packages.
 
-* Authenticate to GitHub Packages. For more information, see "["Authenticating to GitHub Packages](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry#authenticating-to-github-packages)".
-* Add to you `pom.xml`:
+1. Authenticate to GitHub Packages. For more information, see "["Authenticating to GitHub Packages](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry#authenticating-to-github-packages)".
+3. Add to you `pom.xml`:
 ```xml
 <dependency>
   <groupId>com.github.pluralia4j</groupId>
@@ -28,7 +28,7 @@ The pluralia4j package is avaible at GitHub Packages.
   <version>1.0</version>
 </dependency>
 ```
-* Run via command line:
+3. Run via command line:
 ```bash
 $ mvn install
 ```
@@ -64,7 +64,6 @@ plural.plural(messageTemplate, source); //returns "У вас 21 кот, 10 со�
 ```
 
 ## Adding new languages
-
 To add a new language, just implement plural rules for it deriving from `com.github.pluralia4j.lang.Pluralisation` class. Then just use it for `Plural` object:
 
 ```java
