@@ -1,12 +1,11 @@
 package com.github.pluralia4j.dictionary;
 
-import org.junit.Test;
+import junit.framework.TestCase;
 
 import static com.github.pluralia4j.dictionary.EnglishWordformsDictionary.INDEX_MANY;
-import static org.junit.Assert.assertEquals;
 
-public class EnglishWordformsDictionaryTest {
-    @Test
+public class EnglishWordformsDictionaryTest extends TestCase {
+
     public void testTranslateByRule(){
         final EnglishWordformsDictionary englishWordformsDictionary = new EnglishWordformsDictionary();
         assertEquals("dogs", englishWordformsDictionary.translateByRule("dog", INDEX_MANY));

@@ -24,8 +24,8 @@ public final class MessageTemplate {
 
     /**
      * Private parametrised constructor for builder
-     * @param templateItems
-     * @param dictionary
+     * @param templateItems collection of template items
+     * @param dictionary private dictionary for message template
      */
     private MessageTemplate(List<TemplateItem> templateItems, WordformsDictionary dictionary) {
         this.templateItems = templateItems;
@@ -34,7 +34,7 @@ public final class MessageTemplate {
 
     /**
      * Get a builder for MessageTemplate.
-     * @return
+     * @return builder for MessageTemplate
      */
     public static MessageTemplateBuilder builder() {
         return new MessageTemplateBuilder();
