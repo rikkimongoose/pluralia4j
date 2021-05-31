@@ -1,10 +1,8 @@
 package com.github.pluralia4j.math;
 
 import junit.framework.TestCase;
-import org.junit.Test;
 
 import static com.github.pluralia4j.math.MathUtils.separateDouble;
-import static org.junit.Assert.*;
 
 public class MathUtilsTest extends TestCase {
     public void testSeparateDouble() {
