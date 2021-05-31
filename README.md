@@ -93,10 +93,10 @@ exceptions:
   тысячилетие: [тысячилетия, тысячилетий]
 ```
 
-### Requirements
+## Requirements
 
 Java 1.8+
 
-### License
+## License
 
 This project available under Apache 2.0 license
