@@ -27,7 +27,7 @@ public abstract class Pluralisation {
      * @return PluralType for value
      */
     protected PluralType forIntegerAbs(int value) {
-        return (value == 1 || value == 0) ? PluralType.ONE : PluralType.MANY;
+        return (value == 1) ? PluralType.ONE : PluralType.MANY;
     }
 
     /**
