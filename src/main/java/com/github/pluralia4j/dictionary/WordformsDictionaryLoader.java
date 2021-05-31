@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 import java.util.Objects;
 
 /**
- * Loader class for dicionaries stored in YAML format
+ * Loader class for dictionaries stored in YAML format
  */
 public class WordformsDictionaryLoader {
     private final static Yaml yaml = new Yaml(new Constructor(WordformsDictionaryFile.class));

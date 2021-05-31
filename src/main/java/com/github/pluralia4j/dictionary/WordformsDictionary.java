@@ -28,12 +28,12 @@ public class WordformsDictionary {
     @Getter private final Multimap<String, String> localDictionary;
 
     /**
-     *
+     * Dictionary collections stored in current wordforms dictionary
      */
     private final List<Multimap<String, String>> dictionaries = new ArrayList<>();
 
     /**
-     *
+     * Constructor
      */
     public WordformsDictionary() {
         localDictionary = MultimapBuilder.hashKeys().arrayListValues().build();
@@ -41,8 +41,8 @@ public class WordformsDictionary {
     }
 
     /**
-     *
-     * @param localDictionary
+     * Parametrised constructor with predefined wordforms
+     * @param localDictionary predefined wordforms
      */
     public WordformsDictionary(Multimap<String, String> localDictionary) {
         this.localDictionary = localDictionary;
@@ -50,9 +50,9 @@ public class WordformsDictionary {
     }
 
     /**
-     *
-     * @param wordformsDictionary
-     * @return
+     * Put a dictionary to the dictionaries list
+     * @param wordformsDictionary dictionary to add
+     * @return chain of initialisation
      */
     public WordformsDictionary put(WordformsDictionary wordformsDictionary) {
         dictionaries.add(wordformsDictionary.localDictionary);
@@ -60,19 +60,10 @@ public class WordformsDictionary {
     }
 
     /**
+     * Put a dictionary to the top of dictionaries list
      *
-     * @param additionalDictionary
-     * @return
-     */
-    public WordformsDictionary put(Multimap<String, String> additionalDictionary) {
-        dictionaries.add(additionalDictionary);
-        return this;
-    }
-
-    /**
-     *
-     * @param wordformsDictionary
-     * @return
+     * @param wordformsDictionary dictionary to add
+     * @return chain of initialisation
      */
     public WordformsDictionary putTop(WordformsDictionary wordformsDictionary) {
         if(!dictionaries.contains(wordformsDictionary)) {
@@ -81,16 +72,28 @@ public class WordformsDictionary {
         return this;
     }
 
-    public WordformsDictionary put(String key, String... wordforms) {
+    /**
+     * Add a new word to plural forms dictionary
+     * @param word to add to plural forms dictionary
+     * @param wordforms plural wordorms
+     * @return chain of initialisation
+     */
+    public WordformsDictionary put(String word, String... wordforms) {
         List<String> wordformsList = Lists.newArrayList(wordforms);
-        wordformsList.add(0, key);
-        if(localDictionary.containsKey(key)) {
-            localDictionary.get(key).clear();
+        wordformsList.add(0, word);
+        if(localDictionary.containsKey(word)) {
+            localDictionary.get(word).clear();
         }
-        localDictionary.putAll(key, wordformsList.stream().map(String::toLowerCase).collect(Collectors.toList()));
+        localDictionary.putAll(word, wordformsList.stream().map(String::toLowerCase).collect(Collectors.toList()));
         return this;
     }
 
+    /**
+     *
+     * @param key
+     * @param index
+     * @return
+     */
     private String findByKey(@NotNull String key, int index) {
         for (Multimap<String, String> dictionary : dictionaries) {
             if(dictionary.containsKey(key)) {
