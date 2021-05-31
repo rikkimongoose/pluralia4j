@@ -19,30 +19,30 @@ But **pluralia4j** comes to the rescue. Based on standart [CLDR Unicode Plural R
 Translate using external data:
 
 ```java
-        //stored data
-        final Map<String, Number> source = new HashMap<>();
-        source.put("catsCount", 21);
-        source.put("dogsCount", 10);
+//stored data
+final Map<String, Number> source = new HashMap<>();
+source.put("catsCount", 21);
+source.put("dogsCount", 10);
 
-        //Create plural
-        final Plural plural = new Plural(new PluralisationRussian());
-        //fill dictionary
-        plural.dict("кот", "кота", "котов");
+//Create plural
+final Plural plural = new Plural(new PluralisationRussian());
+//fill dictionary
+plural.dict("кот", "кота", "котов");
 
-        //Create a template
-        final MessageTemplate messageTemplate = MessageTemplate.builder()
-                .text("У вас ")
-                .data("catsCount")
-                .text(" ")
-                .plural("catsCount", "кот")
-                .text(", ")
-                .data("dogsCount")
-                .text(" ")
-                //templates has their own dictionary
-                .plural("dogsCount", "собака", "собаки", "собак")
-                .build();
+//Create a template
+final MessageTemplate messageTemplate = MessageTemplate.builder()
+    .text("У вас ")
+    .data("catsCount")
+    .text(" ")
+    .plural("catsCount", "кот")
+    .text(", ")
+    .data("dogsCount")
+    .text(" ")
+    //templates has their own dictionary
+    .plural("dogsCount", "собака", "собаки", "собак")
+    .build();
         
-    plural.plural(messageTemplate, source); //returns "У вас 21 кот, 10 собак"
+plural.plural(messageTemplate, source); //returns "У вас 21 кот, 10 собак"
 ```
 
 ## Adding new languages
