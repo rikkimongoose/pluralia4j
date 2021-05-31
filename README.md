@@ -1,3 +1,5 @@
+# pluralia4j
+
 **pluralia4j** is a lightweight library for Java 8+ that makes generating plural version of words easy.
 
 In most langauges nouns have plural forms. When you display a message, you want it to look natural. A format string isn't enough for it, i.e.
@@ -11,7 +13,7 @@ If values are double, it brings even more trouble (0.5 inch, 1.5 inches, 1 inch,
 
 The English rules for plural nouns aren't easy. The languages with more complicated grammar has more complicated rules as well. A lot of languages (like Irish or Arabic) has not only Singular and Plural, but also [Dual grammatical number](https://en.wikipedia.org/wiki/Dual_(grammatical_number)). Some languages has [Paukal number](https://en.wikipedia.org/wiki/Grammatical_number#Paucal) as well (Russian is most popular of them).
 
-Such a stuff makes i18n of messages with numbers a true pain. This rules are mostly aren't explained in schools.
+That makes i18n of messages with numbers a true pain. This rules are mostly aren't explained in schools.
 
 But **pluralia4j** comes to the rescue. Based on standart [CLDR Unicode Plural Rules](https://unicode-org.github.io/cldr-staging/charts/37/supplemental/language_plural_rules.html), pluralia4j provides a small but powerful DSL to make your messages grammatically consistent.
 
@@ -44,3 +46,10 @@ Translate using external data:
         
     plural.plural(messageTemplate, source); //returns "У вас 21 кот, 10 собак"
 ```
+### Requirements
+
+Java 1.8+
+
+### License
+
+This project available under Apache 2.0 license
