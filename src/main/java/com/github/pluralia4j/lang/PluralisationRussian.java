@@ -34,10 +34,14 @@ public class PluralisationRussian extends Pluralisation {
      */
     @Override
     public PluralType forDouble(double value) {
-        final SeparatedDouble separatedDouble = MathUtils.separateDouble(value);
-        return forInteger((separatedDouble.getFractional() == 0) ?
-                separatedDouble.getInteger() :
-                separatedDouble.getFractional());
+        final SeparatedDouble separatedDouble = MathUtils.separateDouble(Math.abs(value));
+        final int integerPart = separatedDouble.getInteger(),
+                    fractionalPart = separatedDouble.getFractional();
+        return (fractionalPart == 1)
+                ? PluralType.MANY
+                : forInteger((fractionalPart == 0)
+                                ? integerPart
+                                : fractionalPart);
     }
 
     /**
