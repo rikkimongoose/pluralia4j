@@ -44,6 +44,55 @@ Translate using external data:
         
     plural.plural(messageTemplate, source); //returns "У вас 21 кот, 10 собак"
 ```
+
+## Adding new languages
+
+To add a new language, just implement plural rules for it deriving from `com.github.pluralia4j.lang.Pluralisation` class. Then just use it for `Plural` object:
+
+```java
+final Plural plural = new Plural(new MyPluralisation());
+```
+You can add your own ```WordformsDictionary``` with predefined forms as well.
+
+```java
+final Plural plural = new Plural(new MyPluralisation(), myWordfromsDictionary);
+```
+
+You can even add your predefined wordforms dictionary from a YAML file, using `WordformsDictionaryLoader` class:
+
+```java
+final Plural plural = new Plural(new MyPluralisation(), WordformsDictionaryLoader.loadFromStream(myFileStream));
+```
+
+An example of YAML wordforms dictionary:
+
+```yaml
+exceptions:
+  formula: formulae
+  mouse: mice
+  goose: geese
+  deer:
+  sheep:
+```
+
+or, for a language with multiple forms:
+
+```yaml
+exceptions:
+  секунда: [секунды, секунд]
+  минута: [минуты, минут]
+  час: [часа, часов]
+  день: [дня, дней]
+  неделя: [недели, недель]
+  месяц: [месяца, месяцев]
+  квартал: [квартала, кварталов]
+  год: [года,лет]
+  десятилетие: [десятилетия, десятилетий]
+  столетие: [столетия, столетий]
+  век: [века, веков]
+  тысячилетие: [тысячилетия, тысячилетий]
+```
+
 ### Requirements
 
 Java 1.8+
