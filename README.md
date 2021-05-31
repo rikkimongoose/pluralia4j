@@ -1,5 +1,3 @@
-# pluralia4j
-
 **pluralia4j** is a lightweight library for Java 8+ that makes generating plural version of words easy.
 
 In most langauges nouns have plural forms. When you display a message, you want it to look natural. A format string isn't enough for it, i.e.
