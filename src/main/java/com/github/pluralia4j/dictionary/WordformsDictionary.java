@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static com.github.pluralia4j.dictionary.WordformsUtils.wordToWordCase;
 import static com.github.pluralia4j.dictionary.WordformsUtils.getOrLast;
 
 /**
@@ -138,6 +137,10 @@ public class WordformsDictionary {
         return WordformsUtils.wordToWordCase(wordform, wordCase);
     }
 
+    /**
+     *
+     * @param messageTemplateWordforms
+     */
     public void remove(WordformsDictionary messageTemplateWordforms) {
         dictionaries.remove(messageTemplateWordforms);
     }
