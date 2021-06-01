@@ -19,7 +19,7 @@ But **pluralia4j** comes to the rescue. Based on standart [CLDR Unicode Plural R
 ## Install
 The pluralia4j package is currently avaible at GitHub Packages.
 
-1. Authenticate to GitHub Packages. For more information, see "["Authenticating to GitHub Packages](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry#authenticating-to-github-packages)".
+1. Authenticate to GitHub Packages. For more information, see "[Authenticating to GitHub Packages](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry#authenticating-to-github-packages)".
 3. Add to you `pom.xml`:
 ```xml
 <dependency>
