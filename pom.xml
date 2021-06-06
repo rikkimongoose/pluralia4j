@@ -9,6 +9,7 @@
     <version>1.0</version>
     <name>pluralia4j</name>
     <description>Lightweight library for Java 8+ that makes generating plural version of words easy.</description>
+    <url>http://github.com/rikkimongoose/pluralia4j</url>
     <properties>
         <java.version>8</java.version>
     </properties>
@@ -23,6 +24,37 @@
                     <source>8</source>
                     <target>8</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
             </plugin>
         </plugins>
     </build>
@@ -133,6 +165,7 @@
     <scm>
         <connection>scm:git:ssh://git@github.com/rikkimongoose/pluralia4j.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/rikkimongoose/pluralia4j.git</developerConnection>
+        <url>https://github.com/rikkimongoose/pluralia4j/tree/main</url>
         <tag>HEAD</tag>
     </scm>
 </project>
