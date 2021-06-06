@@ -6,7 +6,7 @@
 
     <groupId>io.github.rikkimongoose</groupId>
     <artifactId>pluralia4j</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
     <name>pluralia4j</name>
     <description>Lightweight library for Java 8+ that makes generating plural version of words easy.</description>
     <url>http://github.com/rikkimongoose/pluralia4j</url>
