@@ -17,18 +17,17 @@ That makes i18n of messages with numbers a true pain. This rules are mostly aren
 But **pluralia4j** comes to the rescue. Based on standart [CLDR Unicode Plural Rules](https://unicode-org.github.io/cldr-staging/charts/37/supplemental/language_plural_rules.html), pluralia4j provides a small but powerful DSL to make your messages grammatically consistent.
 
 ## Install
-The **pluralia4j** package is currently avaible at GitHub Packages.
+The **pluralia4j** package is currently avaible at Maven Central repository.
 
-1. Authenticate to GitHub Packages. For more information, see "[Authenticating to GitHub Packages](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry#authenticating-to-github-packages)".
-3. Add to you `pom.xml`:
+1. Add to yours `pom.xml`:
 ```xml
 <dependency>
-  <groupId>com.github.pluralia4j</groupId>
+  <groupId>io.github.rikkimongoose</groupId>
   <artifactId>pluralia4j</artifactId>
   <version>1.0</version>
 </dependency>
 ```
-3. Run via command line:
+2. Run via command line:
 ```bash
 $ mvn install
 ```
@@ -62,6 +61,13 @@ final MessageTemplate messageTemplate = MessageTemplate.builder()
         
 plural.plural(messageTemplate, source); //returns "У вас 21 кот, 10 собак"
 ```
+
+## Pluralia DSL
+* **text(@NonNull String format, Object... args)** — just put text. The format string-like attributes are allowed/
+* **data(@NonNull String key)** — extract data from provided map by key
+* **data(@NonNull String key, @NotNull String format)** — extract data from provided map by key and display it formatted
+* **plural(@NonNull String mapKey, @NonNull String word, @NonNull String... wordforms)** — Add plural by number key item. The word will be pluralised according to provided numberadd plural by map key item. The word will be pluralised according to number extracted from Map by key item
+* **plural(@NonNull Number num, @NonNull String word, @NonNull String... wordforms)** — Add plural by number key item. The word will be pluralised according to provided number
 
 ## Adding new languages
 To add a new language, just implement plural rules for it deriving from `com.github.pluralia4j.lang.Pluralisation` class. Then just use it for `Plural` object:
