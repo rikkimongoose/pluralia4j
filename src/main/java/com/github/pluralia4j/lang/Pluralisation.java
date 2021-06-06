@@ -60,7 +60,7 @@ public abstract class Pluralisation {
     /**
      * Get {@link PluralType} => wordform's index Map
      *
-     * @return EnumMap<PluralType, Integer> with mappings
+     * @return <code>EnumMap&lt;PluralType, Integer&gt;</code> with mappings
      */
     protected Map<PluralType, Integer> getPluralTypeToWordformIndexMap() {
         return defaultMap;

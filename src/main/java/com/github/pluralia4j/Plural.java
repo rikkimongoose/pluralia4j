@@ -80,7 +80,7 @@ public final class Plural {
     }
 
     /**
-     * Make plural form from {@link MessageTemplate} using Map<String, Number>
+     * Make plural form from {@link MessageTemplate} using <code>Map&lt;String, Number&gt;</code>
      *
      * @param messageTemplate template in local DSL
      * @param data data source
@@ -100,7 +100,7 @@ public final class Plural {
     }
 
     /**
-     * Make plural form from {@link MessageTemplate} without using Map<String, Number>
+     * Make plural form from {@link MessageTemplate} without using <code>Map&lt;String, Number&gt;</code>
      *
      * @param messageTemplate template in local DSL
      * @return String with proper plural forms, based on messageTemplate

@@ -6,7 +6,7 @@ import lombok.Setter;
 import java.beans.ConstructorProperties;
 
 /**
- * An item that extracts data from provided Map<String, Number>
+ * An item that extracts data from provided <code>Map&lt;String, Number&gt;</code>
  */
 public class TemplateWithKeyItem extends TemplateItem {
     /**
