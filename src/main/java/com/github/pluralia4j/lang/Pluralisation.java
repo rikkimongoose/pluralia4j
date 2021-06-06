@@ -50,7 +50,7 @@ public abstract class Pluralisation {
     }
 
     /**
-     * Default {@link PluralType} => wordform's index mapping
+     * Default {@link PluralType} =&gt; wordform's index mapping
      */
     private final Map<PluralType, Integer> defaultMap = Maps.immutableEnumMap(ImmutableMap.<PluralType, Integer>builder()
             .put(PluralType.ONE, INDEX_ONE)
@@ -58,7 +58,7 @@ public abstract class Pluralisation {
             .build());
 
     /**
-     * Get {@link PluralType} => wordform's index Map
+     * Get {@link PluralType} =&gt; wordform's index Map
      *
      * @return <code>EnumMap&lt;PluralType, Integer&gt;</code> with mappings
      */
