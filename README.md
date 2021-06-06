@@ -14,7 +14,7 @@ The English rules for plural nouns aren't easy. The languages with more complica
 
 That makes i18n of messages with numbers a true pain. This rules are mostly aren't explained in schools.
 
-But **pluralia4j** comes to the rescue. Based on standart [CLDR Unicode Plural Rules](https://unicode-org.github.io/cldr-staging/charts/37/supplemental/language_plural_rules.html), pluralia4j provides a small but powerful DSL to make your messages grammatically consistent.
+But **pluralia4j** comes to the rescue. Based on standart [CLDR Unicode Plural Rules](https://unicode-org.github.io/cldr-staging/charts/37/supplemental/language_plural_rules.html), **pluralia4j** provides a small but powerful DSL to make your messages grammatically consistent.
 
 ## Install
 The **pluralia4j** package is currently avaible at Maven Central repository.
