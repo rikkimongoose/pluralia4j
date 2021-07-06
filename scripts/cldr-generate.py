@@ -16,8 +16,8 @@ with open(args.t) as file:
 
 for lang, lang_data in json_data.items():
 	for code, code_data in lang_data:
-    	new_file_name = args.t.name.replace(".template", f".{code}")
-    	new_file_contents = Template(template_data).render(data=code_data, lang=lang)
+    	new_file_name = args.t.name.replace(".template", lang)
+    	new_file_contents = Template(template_data).render(data=code_data, code=code, lang=lang)
     	print(f"Creating {new_file_name}")
     	with open(new_file_name, "w") as file_output:
     		file_output.write(new_file_contents)
