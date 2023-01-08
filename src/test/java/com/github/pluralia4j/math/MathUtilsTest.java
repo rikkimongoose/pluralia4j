@@ -2,6 +2,7 @@ package com.github.pluralia4j.math;
 
 import junit.framework.TestCase;
 
+import static com.github.pluralia4j.math.MathUtils.isInteger;
 import static com.github.pluralia4j.math.MathUtils.separateDouble;
 
 public class MathUtilsTest extends TestCase {
@@ -17,5 +18,11 @@ public class MathUtilsTest extends TestCase {
         assertEquals(separatedDouble0_34, separateDouble(0.34));
     }
 
+    public void testIsInteger() {
+        assertTrue(isInteger(0.0));
+        assertTrue(isInteger(12.0));
+        assertFalse(isInteger(12.34));
+        assertFalse(isInteger(0.34));
+    }
 
 }

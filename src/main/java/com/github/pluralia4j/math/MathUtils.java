@@ -32,6 +32,10 @@ public final class MathUtils {
         return new SeparatedDouble(integerPart, fractionalPart);
     }
 
+    public static boolean isInteger(double value) {
+        return value % 1 == 0;
+    }
+
     public static double scaleTo(double value, double scaleSource) {
         final BigDecimal bigDecimalSource = BigDecimal.valueOf(scaleSource);
         final BigDecimal bigDecimalValue = BigDecimal.valueOf(value);

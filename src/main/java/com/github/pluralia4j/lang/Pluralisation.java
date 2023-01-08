@@ -9,7 +9,7 @@ import static com.github.pluralia4j.dictionary.EnglishWordformsDictionary.INDEX_
 import static com.github.pluralia4j.dictionary.WordformsDictionary.INDEX_ONE;
 
 /**
- * Basic pluralisation rules for Russian language
+ * Basic pluralisation rules for a language
  */
 public abstract class Pluralisation {
     /**

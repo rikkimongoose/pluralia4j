@@ -12,7 +12,7 @@ public abstract class PluralisationOneZeroOther extends Pluralisation {
      */
     @Override
     protected PluralType forIntegerAbs(int value) {
-        final List<Integer> oneValues = ImmutableList.of(1);
+        final List<Integer> oneValues = ImmutableList.of(0, 1);
         return (oneValues.contains(value)) ? PluralType.ONE : PluralType.OTHER;
     }
 
