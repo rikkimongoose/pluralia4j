@@ -17,7 +17,7 @@ public final class PluralisationAssamese extends PluralisationOneZeroOther {
      * {@inheritDoc}
      */
     @Override
-    public PluralType forDoubleAbs(double value) {
+    protected PluralType forDoubleAbs(double value) {
         final List<NumberRange<Double>> oneValues = ImmutableList.of(NumberRangeDouble.of(0.0, 0.04), NumberRangeDouble.of(0.0, 1.0));
         return oneValues.stream().anyMatch(v -> v.contains(value) && separateDouble(value * 10).getFractional() == 0) ? PluralType.ONE : PluralType.OTHER;
     }

@@ -31,7 +31,7 @@ public final class PluralisationIrish extends Pluralisation {
      * {@inheritDoc}
      */
     @Override
-    public PluralType forDoubleAbs(double value) {
+    protected PluralType forDoubleAbs(double value) {
         if(Double.compare(value, 1.0) == 0) {
             return PluralType.ONE;
         }

@@ -10,9 +10,9 @@ import java.util.List;
 import static com.github.pluralia4j.math.MathUtils.separateDouble;
 
 /**
- * Basic pluralisation rules for Bangla language
+ * Basic pluralisation rules for Persian language
  */
-public final class PluralisationBangla extends PluralisationOneZeroOther {
+public final class PluralisationPersian extends PluralisationOneZeroOther {
     /**
      * {@inheritDoc}
      */

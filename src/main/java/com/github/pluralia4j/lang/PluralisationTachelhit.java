@@ -1,6 +1,5 @@
 package com.github.pluralia4j.lang;
 
-import com.github.pluralia4j.lang.templates.PluralisationOneZeroOther;
 import com.github.pluralia4j.math.range.NumberRange;
 import com.github.pluralia4j.math.range.NumberRangeDouble;
 import com.google.common.collect.ImmutableList;
@@ -11,9 +10,23 @@ import static com.github.pluralia4j.math.MathUtils.isInteger;
 import static com.github.pluralia4j.math.MathUtils.separateDouble;
 
 /**
- * Basic pluralisation rules for Kannada language
+ * Basic pluralisation rules for Tachelhit language
  */
-public final class PluralisationKannada extends PluralisationOneZeroOther {
+public final class PluralisationTachelhit extends Pluralisation {
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected PluralType forIntegerAbs(int value) {
+        if(value == 0 || value == 1) {
+            return PluralType.ONE;
+        }
+        if(NumberRange.of(2, 10).contains(value)) {
+            return PluralType.FEW;
+        }
+        return PluralType.OTHER;
+    }
+
     /**
      * {@inheritDoc}
      */

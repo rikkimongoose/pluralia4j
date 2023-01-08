@@ -20,7 +20,7 @@ public abstract class PluralisationOneZeroOther extends Pluralisation {
      * {@inheritDoc}
      */
     @Override
-    public PluralType forDoubleAbs(double value) {
+    protected PluralType forDoubleAbs(double value) {
         final List<Double> oneValues = ImmutableList.of(0.0, 1.0);
         return (oneValues.stream().anyMatch(v -> Double.compare(value, v) == 0)) ? PluralType.ONE : PluralType.OTHER;
     }

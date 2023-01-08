@@ -17,7 +17,7 @@ public final class PluralisationAmharic extends PluralisationOneZeroOther {
      * {@inheritDoc}
      */
     @Override
-    public PluralType forDoubleAbs(double value) {
+    protected PluralType forDoubleAbs(double value) {
         final List<NumberRange<Double>> oneValues = ImmutableList.of(NumberRangeDouble.of(0.00, 0.04), NumberRange.of(0.0, 0.1));
         return (oneValues.stream().anyMatch(v -> v.contains(value)) && separateDouble(value * 10).getFractional() == 0) ?
             PluralType.ONE : PluralType.OTHER;

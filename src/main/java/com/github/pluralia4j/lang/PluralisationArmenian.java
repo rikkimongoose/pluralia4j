@@ -10,7 +10,7 @@ public final class PluralisationArmenian extends PluralisationOneZeroOther {
      * {@inheritDoc}
      */
     @Override
-    public PluralType forDoubleAbs(double value) {
+    protected PluralType forDoubleAbs(double value) {
         return (NumberRange.of(0.0, 1.5).contains(value)) ? PluralType.ONE : PluralType.OTHER;
     }
 }

@@ -7,7 +7,7 @@ public abstract class PluralisationOneOtherNotDouble extends PluralisationOneOth
      * {@inheritDoc}
      */
     @Override
-    public PluralType forDoubleAbs(double value) {
+    protected PluralType forDoubleAbs(double value) {
         return PluralType.OTHER;
     }
 }
