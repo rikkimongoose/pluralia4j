@@ -13,7 +13,12 @@ public class SeparatedDouble {
     int integer;
 
     /**
-     * Integer part (for 12.34 is 34)
+     * Fractional part (for 12.34 is 34)
      */
     int fractional;
+
+    /**
+     * Scale in source
+     */
+    int scale;
 }

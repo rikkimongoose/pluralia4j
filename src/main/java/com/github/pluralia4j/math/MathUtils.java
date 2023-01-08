@@ -24,12 +24,12 @@ public final class MathUtils {
         final BigDecimal bigDecimal = BigDecimal.valueOf(value);
         final int scale = bigDecimal.scale();
         if(scale == 0) {
-            return new SeparatedDouble(integerPart, 0);
+            return new SeparatedDouble(integerPart, 0, scale);
         }
         final BigDecimal valueJustFractional = bigDecimal.subtract(new BigDecimal(integerPart));
         final BigDecimal scaleFactor = new BigDecimal(10).pow(scale);
         final int fractionalPart = valueJustFractional.multiply(scaleFactor).intValue();
-        return new SeparatedDouble(integerPart, fractionalPart);
+        return new SeparatedDouble(integerPart, fractionalPart, scale);
     }
 
     public static boolean isInteger(double value) {

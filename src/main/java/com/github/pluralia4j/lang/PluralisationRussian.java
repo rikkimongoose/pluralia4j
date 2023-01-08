@@ -2,6 +2,7 @@ package com.github.pluralia4j.lang;
 
 import com.github.pluralia4j.math.MathUtils;
 import com.github.pluralia4j.math.SeparatedDouble;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 
@@ -20,28 +21,26 @@ public class PluralisationRussian extends Pluralisation {
      */
     @Override
     protected PluralType forIntegerAbs(int value) {
-        if (value % 10 == 1 && value % 100 != 11) {
+        final int valueDiv10 = value % 10,
+                  valueDiv100 = value % 100;
+        if (valueDiv10 == 1 && valueDiv100 != 11) {
             return PluralType.ONE;
         }
-        if (value % 10 >= 2 && value % 10 <= 4 && (value % 100 < 10 || value % 100 >= 20)) {
+        if (ImmutableList.of(2, 3, 4).contains(valueDiv10) && !ImmutableList.of(12, 13, 14).contains(valueDiv100)) {
             return PluralType.FEW;
         }
-        return PluralType.MANY;
+        if(valueDiv10 == 0 &&!ImmutableList.of(11, 12, 13, 14).contains(valueDiv100)) {
+            return PluralType.MANY;
+        }
+        return PluralType.OTHER;
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public PluralType forDouble(double value) {
-        final SeparatedDouble separatedDouble = MathUtils.separateDouble(Math.abs(value));
-        final int integerPart = separatedDouble.getInteger(),
-                    fractionalPart = separatedDouble.getFractional();
-        return (fractionalPart == 1)
-                ? PluralType.MANY
-                : forInteger((fractionalPart == 0)
-                                ? integerPart
-                                : fractionalPart);
+    protected PluralType forDoubleAbs(double value) {
+        return PluralType.OTHER;
     }
 
     /**

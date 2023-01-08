@@ -1,11 +1,12 @@
 package com.github.pluralia4j.lang;
 
+import com.github.pluralia4j.lang.templates.PluralisationDoubleAsInteger;
 import com.github.pluralia4j.math.range.NumberRange;
 
 /**
  * Basic pluralisation rules for Arabic language
  */
-public class PluralisationArabic extends Pluralisation {
+public class PluralisationArabic extends PluralisationDoubleAsInteger {
     /**
      * {@inheritDoc}
      */

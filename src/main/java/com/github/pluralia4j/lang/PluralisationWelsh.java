@@ -1,11 +1,11 @@
 package com.github.pluralia4j.lang;
 
-import static com.github.pluralia4j.math.MathUtils.isInteger;
+import com.github.pluralia4j.lang.templates.PluralisationDoubleAsInteger;
 
 /**
  * Basic pluralisation rules for Welsh language
  */
-public final class PluralisationWelsh extends Pluralisation {
+public final class PluralisationWelsh extends PluralisationDoubleAsInteger {
     /**
      * {@inheritDoc}
      */
@@ -25,17 +25,6 @@ public final class PluralisationWelsh extends Pluralisation {
         }
         if(value == 6) {
             return PluralType.MANY;
-        }
-        return PluralType.OTHER;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected PluralType forDoubleAbs(double value) {
-        if(isInteger(value)) {
-            return forIntegerAbs((int)value);
         }
         return PluralType.OTHER;
     }
