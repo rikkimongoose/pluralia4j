@@ -19,10 +19,14 @@ public class NumberRange<T extends Comparable<T>> {
     }
 
     public boolean containsStrict(T value) {
-        return valueFrom.compareTo(value) <= 0 && valueTo.compareTo(value) >= 0;
+        return valueFrom.compareTo(value) < 0 && valueTo.compareTo(value) > 0;
     }
 
     public static <T extends Comparable<T>> NumberRange<T> of(T valueFrom, T valueTo) {
         return new NumberRange<>(valueFrom, valueTo);
     }
+
+    public T getValueFrom() { return valueFrom; }
+
+    public T getValueTo() { return valueTo; }
 }

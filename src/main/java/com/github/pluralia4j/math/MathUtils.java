@@ -1,6 +1,7 @@
 package com.github.pluralia4j.math;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /**
  * Math utils for number values.
@@ -21,13 +22,19 @@ public final class MathUtils {
     public static SeparatedDouble separateDouble(double value) {
         final int integerPart = (int)value;
         final BigDecimal bigDecimal = BigDecimal.valueOf(value);
-        int scale = bigDecimal.scale();
+        final int scale = bigDecimal.scale();
         if(scale == 0) {
             return new SeparatedDouble(integerPart, 0);
         }
-        BigDecimal valueJustFractional = bigDecimal.subtract(new BigDecimal(integerPart));
-        BigDecimal scaleFactor = new BigDecimal(10).pow(scale);
-        int fractionalPart = valueJustFractional.multiply(scaleFactor).intValue();
+        final BigDecimal valueJustFractional = bigDecimal.subtract(new BigDecimal(integerPart));
+        final BigDecimal scaleFactor = new BigDecimal(10).pow(scale);
+        final int fractionalPart = valueJustFractional.multiply(scaleFactor).intValue();
         return new SeparatedDouble(integerPart, fractionalPart);
+    }
+
+    public static double scaleTo(double value, double scaleSource) {
+        final BigDecimal bigDecimalSource = BigDecimal.valueOf(scaleSource);
+        final BigDecimal bigDecimalValue = BigDecimal.valueOf(value);
+        return bigDecimalValue.setScale(bigDecimalSource.scale(), RoundingMode.CEILING).doubleValue();
     }
 }
