@@ -34,7 +34,8 @@ public final class EnglishWordformsDictionary extends WordformsDictionary {
         if(index == 0) {
             return key;
         }
-        final Pattern foundPattern = regExRules.keySet().stream().filter(pattern -> pattern.matcher(key).matches()).findFirst().orElse(null);
+        final Pattern foundPattern = regExRules.keySet().stream().filter(pattern -> pattern.matcher(key).matches()).findFirst()
+                .orElse(null);
         if(Objects.isNull(foundPattern)) {
             return String.format("%ss", key);
         }

@@ -72,10 +72,7 @@ public abstract class Pluralisation {
      * @return the proper wordform's index for {@link PluralType}, otherwise 0
      */
     protected int wordformIndexByPluralType(PluralType pluralType) {
-        if(!getPluralTypeToWordformIndexMap().containsKey(pluralType)) {
-            return 0;
-        }
-        return getPluralTypeToWordformIndexMap().get(pluralType);
+        return getPluralTypeToWordformIndexMap().getOrDefault(pluralType, 0);
     }
 
     /**
