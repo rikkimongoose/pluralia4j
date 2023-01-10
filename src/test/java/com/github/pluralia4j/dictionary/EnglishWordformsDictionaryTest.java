@@ -1,19 +1,18 @@
 package com.github.pluralia4j.dictionary;
 
+import com.github.pluralia4j.lang.PluralType;
 import junit.framework.TestCase;
-
-import static com.github.pluralia4j.dictionary.EnglishWordformsDictionary.INDEX_MANY;
 
 public class EnglishWordformsDictionaryTest extends TestCase {
 
-    public void testTranslateByRule(){
+    public void testTranslateByRule() {
         final EnglishWordformsDictionary englishWordformsDictionary = new EnglishWordformsDictionary();
-        assertEquals("dogs", englishWordformsDictionary.pluralByRule("dog", INDEX_MANY));
-        assertEquals("boxes", englishWordformsDictionary.pluralByRule("box", INDEX_MANY));
-        assertEquals("matches", englishWordformsDictionary.pluralByRule("match", INDEX_MANY));
-        assertEquals("bosses", englishWordformsDictionary.pluralByRule("boss", INDEX_MANY));
-        assertEquals("knives", englishWordformsDictionary.pluralByRule("knife", INDEX_MANY));
-        assertEquals("kitties", englishWordformsDictionary.pluralByRule("kitty", INDEX_MANY));
-        assertEquals("potatoes", englishWordformsDictionary.pluralByRule("potato", INDEX_MANY));
+        assertEquals("dogs", englishWordformsDictionary.pluralByRule("dog", PluralType.OTHER));
+        assertEquals("boxes", englishWordformsDictionary.pluralByRule("box", PluralType.OTHER));
+        assertEquals("matches", englishWordformsDictionary.pluralByRule("match", PluralType.OTHER));
+        assertEquals("bosses", englishWordformsDictionary.pluralByRule("boss", PluralType.OTHER));
+        assertEquals("knives", englishWordformsDictionary.pluralByRule("knife", PluralType.OTHER));
+        assertEquals("kitties", englishWordformsDictionary.pluralByRule("kitty", PluralType.OTHER));
+        assertEquals("potatoes", englishWordformsDictionary.pluralByRule("potato", PluralType.OTHER));
     }
 }

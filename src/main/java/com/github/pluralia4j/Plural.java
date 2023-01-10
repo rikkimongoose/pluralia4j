@@ -1,6 +1,7 @@
 package com.github.pluralia4j;
 
 import com.github.pluralia4j.dictionary.WordformsDictionary;
+import com.github.pluralia4j.lang.PluralType;
 import com.github.pluralia4j.lang.Pluralisation;
 import com.github.pluralia4j.lang.PluralisationEnglish;
 import com.github.pluralia4j.lang.PluralisationRussian;
@@ -130,16 +131,16 @@ public final class Plural {
             }
 
             if (templateWithKeyItem instanceof TemplatePluralItem) {
-                final TemplatePluralItem templateTextItem = (TemplatePluralItem)templateItem;
-                final int index = pluralisation.wordformIndex(data.get(key));
-                return wordformsDictionary.plural(templateTextItem.getWord(), index);
+                final TemplatePluralItem templateTextItem = (TemplatePluralItem) templateItem;
+                final PluralType pluralType = pluralisation.wordformIndex(data.get(key));
+                return wordformsDictionary.plural(templateTextItem.getWord(), pluralType);
             }
         }
 
         if (templateItem instanceof TemplatePluralNumberItem) {
-            final TemplatePluralNumberItem templatePluralNumberItem = (TemplatePluralNumberItem)templateItem;
-            final int index = pluralisation.wordformIndex(templatePluralNumberItem.getNum());
-            return wordformsDictionary.plural(templatePluralNumberItem.getWord(), index);
+            final TemplatePluralNumberItem templatePluralNumberItem = (TemplatePluralNumberItem) templateItem;
+            final PluralType pluralType = pluralisation.wordformIndex(templatePluralNumberItem.getNum());
+            return wordformsDictionary.plural(templatePluralNumberItem.getWord(), pluralType);
         }
 
         if (templateItem instanceof TemplateTextItem) {

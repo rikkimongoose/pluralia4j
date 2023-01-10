@@ -34,7 +34,7 @@ public class PluralTest extends TestCase {
         //Integer
         final MessageTemplate messageTemplate = MessageTemplate.builder()
                 .text("У нас было")
-                .dict("кот", "кота", "котов")
+                .dict("кот", "котов", "кота")
                 .text(" ").data(ITEMS_0).text(" ")
                 .plural(ITEMS_0, "кот")
                 .text(" ").data(ITEMS_1).text(" ")
@@ -56,7 +56,7 @@ public class PluralTest extends TestCase {
         // Double
         final MessageTemplate messageTemplateDouble = MessageTemplate.builder()
                 .text("У нас было")
-                .dict("кот", "кота", "котов")
+                .dict("кот", "котов", "кота")
                 .text(" ").data(ITEMS_2_2).text(" ")
                 .plural(ITEMS_2_2, "кот")
                 .text(" ").data(ITEMS_2_5).text(" ")
@@ -79,7 +79,7 @@ public class PluralTest extends TestCase {
     public void testPlural() {
         //Integer
         final MessageTemplate messageTemplate = MessageTemplate.builder()
-                .dict("кот", "кота", "котов")
+                .dict("кот", "котов", "кота")
                 .text("У нас было")
                 .text(" 0 ")
                 .plural(0, "кот")
@@ -102,7 +102,7 @@ public class PluralTest extends TestCase {
 
     public void testDict() {
         final Plural plural = new Plural(new PluralisationRussian());
-        plural.dict("кот", "кота", "котов");
+        plural.dict("кот", "котов", "кота");
         final MessageTemplate messageTemplate = MessageTemplate.builder()
                 .text("У нас было")
                 .text(" 0 ")
