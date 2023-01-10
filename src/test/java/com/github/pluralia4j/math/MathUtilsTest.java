@@ -7,8 +7,8 @@ import static com.github.pluralia4j.math.MathUtils.separateDouble;
 
 public class MathUtilsTest extends TestCase {
     public void testSeparateDouble() {
-        final SeparatedDouble separatedDouble0_0 = new SeparatedDouble(0, 0, 1);
-        final SeparatedDouble separatedDouble12_0 = new SeparatedDouble(12, 0, 1);
+        final SeparatedDouble separatedDouble0_0 = new SeparatedDouble(0, 0, 0);
+        final SeparatedDouble separatedDouble12_0 = new SeparatedDouble(12, 0, 0);
         final SeparatedDouble separatedDouble12_34 = new SeparatedDouble(12, 34, 2);
         final SeparatedDouble separatedDouble0_34 = new SeparatedDouble(0, 34, 2);
 

@@ -21,10 +21,11 @@ The **pluralia4j** package is currently [avaible at Maven Central repository](ht
 
 1. Add to yours `pom.xml`:
 ```xml
+
 <dependency>
-  <groupId>io.github.rikkimongoose</groupId>
-  <artifactId>pluralia4j</artifactId>
-  <version>1.0</version>
+    <groupId>io.github.rikkimongoose</groupId>
+    <artifactId>pluralia4j</artifactId>
+    <version>1.2</version>
 </dependency>
 ```
 2. Run via command line:
@@ -44,41 +45,56 @@ source.put("dogsCount", 10);
 //Create plural
 final Plural plural = new Plural(new PluralisationRussian());
 //fill dictionary
-plural.dict("кот", "кота", "котов");
+        plural.dict("кот","котов","кота");
 
 //Create a template
-final MessageTemplate messageTemplate = MessageTemplate.builder()
-    .text("У вас ")
-    .data("catsCount")
-    .text(" ")
-    .plural("catsCount", "кот")
-    .text(", ")
-    .data("dogsCount")
-    .text(" ")
-    //templates has their own dictionary
-    .plural("dogsCount", "собака", "собаки", "собак")
-    .build();
-        
-plural.plural(messageTemplate, source); //returns "У вас 21 кот, 10 собак"
+final MessageTemplate messageTemplate=MessageTemplate.builder()
+        .text("У вас ")
+        .data("catsCount")
+        .text(" ")
+        .plural("catsCount","кот")
+        .text(", ")
+        .data("dogsCount")
+        .text(" ")
+        //templates has their own dictionary
+        .plural("dogsCount","собака","собак","собаки")
+        .build();
+
+        plural.plural(messageTemplate,source); //returns "У вас 21 кот, 10 собак"
 ```
 
 ## Pluralia DSL
+
 * **text(@NonNull String format, Object... args)** — just put text. The format string-like attributes are allowed/
 * **data(@NonNull String key)** — extract data from provided map by key
 * **data(@NonNull String key, @NotNull String format)** — extract data from provided map by key and display it formatted
-* **plural(@NonNull String mapKey, @NonNull String word, @NonNull String... wordforms)** — Add plural by number key item. The word will be pluralised according to provided numberadd plural by map key item. The word will be pluralised according to number extracted from Map by key item
-* **plural(@NonNull Number num, @NonNull String word, @NonNull String... wordforms)** — Add plural by number key item. The word will be pluralised according to provided number
+* **plural(@NonNull String mapKey, @NonNull String word, @NonNull String... wordforms)** — Add plural by number key
+  item. The word will be pluralised according to provided numberadd plural by map key item. The word will be pluralised
+  according to number extracted from Map by key item
+* **plural(@NonNull Number num, @NonNull String word, @NonNull String... wordforms)** — Add plural by number key item.
+  The word will be pluralised according to provided number
 
-## Adding new languages
-To add a new language, just implement plural rules for it deriving from `com.github.pluralia4j.lang.Pluralisation` class. Then just use it for `Plural` object:
+Wordforms order:
 
 ```java
-final Plural plural = new Plural(new MyPluralisation());
+   .plural(ONE,OTHER,FEW,MANY,TWO,ZERO)
 ```
+
+If language doesn't have ZERO, MANY, FEW, etc wordforms, just avoid this params.
+
+## Adding new languages
+
+To add a new language, just implement plural rules for it deriving from `com.github.pluralia4j.lang.Pluralisation`
+class. Then just use it for `Plural` object:
+
+```java
+final Plural plural=new Plural(new MyPluralisation());
+```
+
 You can add your own ```WordformsDictionary``` with predefined forms as well.
 
 ```java
-final Plural plural = new Plural(new MyPluralisation(), myWordfromsDictionary);
+final Plural plural=new Plural(new MyPluralisation(),myWordfromsDictionary);
 ```
 
 You can even add your predefined wordforms dictionary from a YAML file, using `WordformsDictionaryLoader` class:
