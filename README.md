@@ -121,19 +121,224 @@ exceptions:
   секунда: [секунды, секунд]
   минута: [минуты, минут]
   час: [часа, часов]
-  день: [дня, дней]
-  неделя: [недели, недель]
-  месяц: [месяца, месяцев]
-  квартал: [квартала, кварталов]
-  год: [года,лет]
-  десятилетие: [десятилетия, десятилетий]
-  столетие: [столетия, столетий]
-  век: [века, веков]
-  тысячилетие: [тысячилетия, тысячилетий]
+  день: [ дня, дней ]
+  неделя: [ недели, недель ]
+  месяц: [ месяца, месяцев ]
+  квартал: [ квартала, кварталов ]
+  год: [ года,лет ]
+  десятилетие: [ десятилетия, десятилетий ]
+  столетие: [ столетия, столетий ]
+  век: [ века, веков ]
+  тысячелетие: [ тысячелетия, тысячелетий ]
 ```
 
+## Languages
+
+The following languages are supported. They are implemented according
+to [CLDR v37.0 Language Plural Rules](https://unicode-org.github.io/cldr-staging/charts/37/supplemental/language_plural_rules.html)
+.
+
+* Afrikaans
+* Akan
+* Albanian
+* Amharic
+* Arabic
+* Aragonese
+* Armenian
+* Assamese
+* Asturian
+* Asu
+* Azerbaijani
+* Bambara
+* Bangla
+* Basque
+* Belorussian
+* Bemba
+* Bena
+* Bhojpuri
+* Bodo
+* Bosnian
+* Breton
+* Bulgarian
+* Burmese
+* Cantonese
+* Cebuano
+* CentralKurdish
+* Chechen
+* Cherokee
+* Chiga
+* Chinese
+* Colognian
+* Cornish
+* Croatian
+* Czech
+* Danish
+* Divehi
+* Dutch
+* Dzongkha
+* English
+* Esperanto
+* Estonian
+* EuropeanPortuguese
+* Ewe
+* Faroese
+* Filipino
+* Finnish
+* Friulian
+* Galician
+* Ganda
+* Georgian
+* German
+* Gun
+* Hausa
+* Hawaiian
+* Hebrew
+* Hindi
+* Hungarian
+* Icelandic
+* Ido
+* Igbo
+* InariSami
+* Indonesian
+* Interlingua
+* Inuktitut
+* Irish
+* Italian
+* Japanese
+* Javanese
+* Jju
+* Kabuverdianu
+* Kako
+* Kalaallisut
+* Kannada
+* Kashmiri
+* Kazakh
+* Khmer
+* Korean
+* KoyraboroSenni
+* Kurdish
+* Kyrgyz
+* Lakota
+* Langi
+* Lao
+* Latvian
+* Lingala
+* Lithuanian
+* Lojban
+* LowerSorbian
+* LuleSami
+* Luxembourgish
+* Macedonian
+* Machame
+* Makonde
+* Malagasy
+* Malayalam
+* Malay
+* Maltese
+* Manx
+* Marathi
+* Masai
+* Meta
+* Mongolian
+* Nahuatl
+* NajdiArabic
+* Nama
+* Nepali
+* Ngiemboon
+* Ngomba
+* NKo
+* NorthernSami
+* NorthernSotho
+* NorthNdebele
+* Norwegian
+* Nyanja
+* Nyankole
+* Odia
+* Oromo
+* Osage
+* Ossetic
+* Papiamento
+* Pashto
+* Persian
+* Polish
+* Portuguese
+* Prussian
+* Punjabi
+* Romanian
+* Romansh
+* Rombo
+* Russian
+* Rwa
+* Saho
+* Sakha
+* Samburu
+* Sami
+* Sango
+* Santali
+* Sardinian
+* ScottishGaelic
+* Sena
+* Serbian
+* Shambala
+* Shona
+* SichuanYi
+* Sicilian
+* Sindhi
+* Sinhala
+* SkoltSami
+* Slovak
+* Slovenian
+* Soga
+* Somali
+* SouthernKurdish
+* SouthernSami
+* SouthernSotho
+* SouthNdebele
+* Spanish
+* Sundanese
+* Swahili
+* Swati
+* Swedish
+* SwissGerman
+* Syriac
+* Tachelhit
+* Tamazight
+* Tamil
+* Telugu
+* Teso
+* Thai
+* Tibetan
+* Tigre
+* Tigrinya
+* Tongan
+* Tsonga
+* Tswana
+* Turkish
+* Turkmen
+* Tyap
+* Ukrainian
+* UpperSorbian
+* Urdu
+* Uyghur
+* Uzbek
+* Venda
+* Vietnamese
+* Volapuk
+* Vunjo
+* Walloon
+* Walser
+* Welsh
+* WesternFrisian
+* Wolof
+* Xhosa
+* Yiddish
+* Yoruba
+* Zulu
+
 ## Requirements
+
 Java 1.8+
 
 ## License
+
 This project available under Apache 2.0 license
