@@ -15,8 +15,8 @@ public class NumberRange<T extends Comparable<T>> {
     /**
      * Constructor
      *
-     * @param valueFrom
-     * @param valueTo
+     * @param valueFrom value from
+     * @param valueTo   value to
      */
     public NumberRange(T valueFrom, T valueTo) {
         if (valueFrom.compareTo(valueTo) < 0) {
@@ -29,10 +29,10 @@ public class NumberRange<T extends Comparable<T>> {
     }
 
     /**
-     * Check, is valueFrom <= value <= valueTo
+     * Check, is valueFrom &lt;= value &lt;= valueTo
      *
      * @param value value to check
-     * @return <code>true</code> if valueFrom <= value <= valueTo
+     * @return <code>true</code> if valueFrom &lt;= value &lt;= valueTo
      */
     public boolean contains(T value) {
         return valueFrom.compareTo(value) <= 0 && valueTo.compareTo(value) >= 0;
