@@ -1,5 +1,6 @@
 package com.github.pluralia4j.dictionary;
 
+import com.github.pluralia4j.lang.PluralType;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.MultimapBuilder;
@@ -18,11 +19,6 @@ import static com.github.pluralia4j.dictionary.WordformsUtils.getOrLast;
  * Wordforms storage
  */
 public class WordformsDictionary {
-    /**
-     * Single index
-     */
-    public static final int INDEX_ONE = 0;
-
     /**
      * Local dictionary of storage
      */
@@ -91,54 +87,56 @@ public class WordformsDictionary {
 
     /**
      * Find wordforms by word
-     * @param word word to pluralise
-     * @param index plural wordform's index
+     *
+     * @param word       word to pluralise
+     * @param pluralType plural wordform
      * @return word in plural form
      */
-    private String findByWord(@NotNull String word, int index) {
-        for (Multimap<String, String> dictionary : dictionaries) {
-            if(dictionary.containsKey(word)) {
-                List<String> wordforms = new ArrayList<>(dictionary.get(word));
-                return getOrLast(wordforms, index);
-            }
-        }
-        return null;
+    private String findByWord(@NotNull String word, PluralType pluralType) {
+        return dictionaries.stream()
+                .filter(dictionary -> dictionary.containsKey(word))
+                .map(dictionary -> getOrLast(new ArrayList<>(dictionary.get(word)), pluralType.getIndex()))
+                .findFirst()
+                .orElse(null);
     }
 
     /**
      * Get plural form of a word according to grammar rules, without using any wordforms dictionaries.
-     * @param word word to pluralise
-     * @param index plural wordform's index
+     *
+     * @param word       word to pluralise
+     * @param pluralType plural wordform's
      * @return word in plural form
      */
-    public String pluralByRule(@NotNull String word, int index) {
+    public String pluralByRule(@NotNull String word, PluralType pluralType) {
         return word;
     }
 
     /**
      * Get plural wordform according to local dictionaries
-     * @param word word to pluralise
-     * @param index plural wordform's index
+     *
+     * @param word       word to pluralise
+     * @param pluralType plural wordform
      * @return word in plural form
      */
-    protected String pluralByDictionary(@NotNull String word, int index) {
-        final String wordform = findByWord(word, index);
-        if(Objects.nonNull(wordform)) {
+    protected String pluralByDictionary(@NotNull String word, PluralType pluralType) {
+        final String wordform = findByWord(word, pluralType);
+        if (Objects.nonNull(wordform)) {
             return wordform;
         }
-        return pluralByRule(word, index);
+        return pluralByRule(word, pluralType);
     }
 
     /**
      * Get plural wordform for a word in same case
-     * @param word word to pluralise
-     * @param index plural wordform index
+     *
+     * @param word       word to pluralise
+     * @param pluralType plural wordform index
      * @return word in plural form
      */
-    public String plural(@NotNull String word, int index) {
+    public String plural(@NotNull String word, PluralType pluralType) {
         final WordCase wordCase = WordformsUtils.wordCaseByWord(word);
         final String key = word.toLowerCase();
-        final String wordform = pluralByDictionary(key, index);
+        final String wordform = pluralByDictionary(key, pluralType);
         return WordformsUtils.wordToWordCase(wordform, wordCase);
     }
 

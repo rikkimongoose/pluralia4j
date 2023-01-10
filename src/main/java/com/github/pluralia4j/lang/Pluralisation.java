@@ -1,12 +1,6 @@
 package com.github.pluralia4j.lang;
 
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-
-import java.util.Map;
-
-import static com.github.pluralia4j.dictionary.EnglishWordformsDictionary.INDEX_MANY;
-import static com.github.pluralia4j.dictionary.WordformsDictionary.INDEX_ONE;
+import static com.github.pluralia4j.math.MathUtils.isInteger;
 
 /**
  * Basic pluralisation rules for a language
@@ -27,7 +21,7 @@ public abstract class Pluralisation {
      * @return {@link PluralType} for value
      */
     protected PluralType forIntegerAbs(int value) {
-        return (value == 1) ? PluralType.ONE : PluralType.MANY;
+        return (value == 1) ? PluralType.ONE : PluralType.OTHER;
     }
 
     /**
@@ -45,43 +39,18 @@ public abstract class Pluralisation {
      * @return {@link PluralType} for value
      */
     protected PluralType forDoubleAbs(double value) {
-        int valueAsInt = (int)value;
-        return ((double)valueAsInt == value) ? forIntegerAbs(valueAsInt) : ((value > 0.0 && value < 1.0) ? PluralType.ONE : PluralType.MANY);
-    }
-
-    /**
-     * Default {@link PluralType} =&gt; wordform's index mapping
-     */
-    private final Map<PluralType, Integer> defaultMap = Maps.immutableEnumMap(ImmutableMap.<PluralType, Integer>builder()
-            .put(PluralType.ONE, INDEX_ONE)
-            .put(PluralType.MANY, INDEX_MANY)
-            .build());
-
-    /**
-     * Get {@link PluralType} =&gt; wordform's index Map
-     *
-     * @return <code>EnumMap&lt;PluralType, Integer&gt;</code> with mappings
-     */
-    protected Map<PluralType, Integer> getPluralTypeToWordformIndexMap() {
-        return defaultMap;
-    }
-
-    /**
-     * Get wordform's index for a {@link PluralType}
-     * @param pluralType {@link PluralType} which index is loaded
-     * @return the proper wordform's index for {@link PluralType}, otherwise 0
-     */
-    protected int wordformIndexByPluralType(PluralType pluralType) {
-        return getPluralTypeToWordformIndexMap().getOrDefault(pluralType, 0);
+        return (isInteger(value)) ? forIntegerAbs((int) value) : PluralType.OTHER;
     }
 
     /**
      * Get wordform's index by number
      *
      * @param number number of items that makes them plural
-     * @return index of wordform in dictionary record for current language by number
+     * @return PluralType for current language by number
      */
-    public int wordformIndex(Number number) {
-        return wordformIndexByPluralType(forDouble(number.doubleValue()));
+    public PluralType wordformIndex(Number number) {
+        return (number instanceof Integer) ?
+                forInteger(number.intValue()) :
+                forDouble(number.doubleValue());
     }
 }

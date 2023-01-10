@@ -17,19 +17,18 @@ public class MessageTemplateTest extends TestCase {
                 .put(RATS_COUNT, 177)
                 .build();
 
-
         final MessageTemplate messageTemplate = MessageTemplate.builder()
-                .dict("кот", "кота", "котов")
-                .dict("крыса", "крысы", "крыс")
+                .dict("кот", "котов", "кота")
+                .dict("крыса", "крыс", "крысы")
                 .text("Мы тестируем: %s, %s, %s и %s. ", "котов", "собак", "мышей", "крыс")
                 .text("У нас есть 3 ")
                 .plural(3, "кот")
                 .text(", 3 ")
-                .plural(3, "собака", "собаки", "собак")
+                .plural(3, "собака", "собак", "собаки")
                 .text(", ")
                 .data(MICE_COUNT)
                 .text(" ")
-                .plural(MICE_COUNT, "мышь", "мыши", "мышей")
+                .plural(MICE_COUNT, "мышь", "мышей", "мыши")
                 .text(", ")
                 .data(RATS_COUNT)
                 .text(" ")

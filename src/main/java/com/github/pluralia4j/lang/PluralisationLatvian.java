@@ -3,8 +3,6 @@ package com.github.pluralia4j.lang;
 import com.github.pluralia4j.math.SeparatedDouble;
 import com.github.pluralia4j.math.range.NumberRange;
 
-import java.math.BigDecimal;
-
 import static com.github.pluralia4j.math.MathUtils.isInteger;
 import static com.github.pluralia4j.math.MathUtils.separateDouble;
 

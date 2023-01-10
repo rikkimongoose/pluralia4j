@@ -17,7 +17,7 @@ public class ReadMeExampleTest extends TestCase {
         //Create plural
         final Plural plural = new Plural(new PluralisationRussian());
         //fill dictionary
-        plural.dict("кот", "кота", "котов");
+        plural.dict("кот", "котов", "кота");
 
         //Create a template
         final MessageTemplate messageTemplate = MessageTemplate.builder()
@@ -29,7 +29,7 @@ public class ReadMeExampleTest extends TestCase {
                 .data("dogsCount")
                 .text(" ")
                 //templates has their own dictionary
-                .plural("dogsCount", "собака", "собаки", "собак")
+                .plural("dogsCount", "собака", "собак", "собаки")
                 .build();
         assertEquals("У вас 21 кот, 10 собак", plural.plural(messageTemplate, source));
     }
