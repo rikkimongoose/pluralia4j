@@ -12,7 +12,7 @@
     <url>http://github.com/rikkimongoose/pluralia4j</url>
     <properties>
         <java.version>1.8</java.version>
-        <snakeyaml.version>1.33</snakeyaml.version>
+        <snakeyaml.version>2.0</snakeyaml.version>
         <commons.lang3.version>3.12.0</commons.lang3.version>
         <lombok.version>1.18.24</lombok.version>
         <guava.version>31.1-android</guava.version>
